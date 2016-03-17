@@ -23,6 +23,11 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -40,13 +45,13 @@ call vundle#begin()
   Plugin 'tpope/vim-rbenv'
   Plugin 'tpope/vim-bundler'
   Plugin 'tpope/vim-endwise'
+  Plugin 'tpope/vim-dispatch'
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'tomtom/tlib_vim'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'wellle/targets.vim'
   Plugin 'vim-scripts/closetag.vim'
   Plugin 'scrooloose/syntastic'
-  Plugin 'honza/vim-snippets'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'airblade/vim-gitgutter'
@@ -55,6 +60,7 @@ call vundle#begin()
   Plugin 'jiangmiao/auto-pairs'
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'scrooloose/nerdtree'
+  Plugin 'thoughtbot/vim-rspec'
   Plugin 'morhetz/gruvbox'
   Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
@@ -96,10 +102,7 @@ set linebreak
 set cursorline
 set cursorcolumn
 
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_loc_list=1
-
-autocmd InsertEnter * :set number
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 autocmd FileType ruby,haml,yaml,coffee BracelessEnable +fold +highlight
 autocmd WinLeave * setlocal nocursorline
@@ -113,3 +116,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
+
+let g:syntastic_aggregate_errors=1
+let g:syntastic_auto_loc_list=1
+
+let g:rspec_command="Dispatch rspec {spec}"
+let g:rspec_runner="os_x_iterm2"
