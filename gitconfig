@@ -1,0 +1,111 @@
+[user]
+	name = David Hagerty
+	email = hagerty9009@gmail.com
+
+[color]
+	ui = 1
+
+[diff]
+	renames = copies
+	mnemonicprefix = true
+
+[core]
+	excludesfile = /Users/David/.gitignore
+	editor = "vim"
+
+[merge "railsschema"]
+  name = newer Rails schema version
+	driver = "ruby -e '\n\
+    system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
+    b = File.read(%(%A))\n\
+    b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
+      %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
+    end\n\
+    File.open(%(%A), %(w)) {|f| f.write(b)}\n\
+    exit 1 if b.include?(%(<)*%L)'"
+
+[alias]
+  # Adding files to staging
+  ai = add --interactive
+	a = add
+	aa = add .
+
+  # All the aliases relate to commits. Note that
+  # they are grouped by common prefixes, so I don't
+  # confuse what I want done by accident.
+  c = commit
+  cm = commit -m
+  cma = commit -a -m
+	ca = commit -a
+	ci = commit -a -m "Initial Commit"
+
+  # soft resets
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+
+	# hard resets
+  rh = reset --hard
+  rh1 = reset --hard HEAD^
+  rh2 = reset --hard HEAD^^
+
+  # shortcuts for commands
+  st = status -sb
+  d = diff
+  co = checkout
+	cb = checkout -b
+  b = branch
+	bd = branch -d
+  f = fetch
+  p = push
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	branches = branch -a
+	remotes = remote -v
+	tags = tag -l
+	ctags = !.git/hooks/ctags
+
+[github]
+	user = dhagerty9009
+	token = $GITHUB_TOKEN
+
+[credential]
+	helper = osxkeychain
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+
+[url "https://github.com/"]
+    insteadOf = gh:
+
+[url "https://gist.github.com/"]
+    insteadOf = gist:
+
+[url "https://bitbucket.org/"]
+    insteadOf = bb:
+
+[branch]
+	autosetupmerge = always
+	autosetuprebase = always
+[rerere]
+	enabled = true
+	autoupdate = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[push]
+	default = matching
+[init]
+	templatedir = ~/.git_template
+[merge]
+	tool = vimdiff
+[mergetool]
+	conflictstyle = diff3
+	prompt = false

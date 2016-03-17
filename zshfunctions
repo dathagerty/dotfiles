@@ -1,0 +1,79 @@
+### Aliases and functions, listed by purpose
+
+## Homebrew aliases
+
+function brho { brew home $1; }
+function brse { brew search $1; }
+alias bupd="brew update"
+alias bupg="brew upgrade --all && brew cleanup"
+alias cask="brew cask"
+
+## Git aliases
+
+alias g="git"
+alias git=hub
+
+function feature { git checkout -b feature-$1; }
+function hotfix { git checkout -b hotfix-$1; }
+
+alias gpo="git push origin"
+alias gpm="git push origin master"
+
+## Docker Aliases
+
+alias doco="docker-compose"
+alias doma="docker-machine"
+alias dcr="docker-compose run"
+
+## Rails Aliases
+
+alias r="rails"
+alias routes="rake routes"
+alias rc="rails console"
+alias rs="rails server"
+function routes_for { rake routes | grep $1; }
+
+## Tmux Aliases
+alias tat="tmux attach -t"
+alias tswitch="tmux switch -t"
+function tsession { z $1; tmux new-session -s $1; }
+
+## Navigation Aliases
+
+alias ..="cd .."
+alias ....="cd ../.."
+
+alias la="ls -la"
+alias lf="ls -AFG"
+
+function mcd { mkdir $1; cd $1; } 
+function cdl { cd $1; ls -a; } 
+function mct { mkdir $1; cd $1; touch $2; }
+
+## Editing Aliases
+
+alias zcs="source ~/.zshrc"
+alias vim="/usr/local/Cellar/macvim/7.*/MacVim.app/Contents/MacOS/Vim"
+
+## Network Aliases
+
+alias ntest="ping -n -c 1000 www.google.com"
+
+## Application Aliases
+
+alias tover="travis branches"
+alias tstat="travis status"
+alias tlive="travis logs"
+alias mc="mailcatcher"
+alias pgload="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pgunload="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+## Scripting Aliases
+
+alias py26="python"
+alias pyi3="python3"
+alias rb="ruby"
+
+alias koans="cd ~/code/Ruby/koans/; ruby path_to_enlightenment.rb"
