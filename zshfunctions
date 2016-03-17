@@ -36,7 +36,7 @@ function routes_for { rake routes | grep $1; }
 ## Tmux Aliases
 alias tat="tmux attach -t"
 alias tswitch="tmux switch -t"
-function tsession { z $1; tmux new-session -s $1; }
+alias tsession="tmux new-session -s $PWD"
 
 ## Navigation Aliases
 
