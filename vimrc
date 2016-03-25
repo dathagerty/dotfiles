@@ -18,10 +18,10 @@ nmap <leader>h :nohlsearch<CR>
 nnoremap <expr> { len(getline(line('.')-1)) > 0 ? '{+' : '{-'
 nnoremap <expr> } len(getline(line('.')+1)) > 0 ? '}-' : '}+'
 
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
@@ -102,7 +102,7 @@ set linebreak
 set cursorline
 set cursorcolumn
 
-autocmd InsertEnter * :set norelativenumber
+autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 autocmd FileType ruby,haml,yaml,coffee BracelessEnable +fold +highlight
 autocmd WinLeave * setlocal nocursorline
@@ -123,5 +123,5 @@ let g:ctrlp_use_caching = 0
 let g:syntastic_aggregate_errors=1
 let g:syntastic_auto_loc_list=1
 
-let g:rspec_command="Dispatch rspec {spec}"
+let g:rspec_command="bundle exec rspec {spec}"
 let g:rspec_runner="os_x_iterm2"
