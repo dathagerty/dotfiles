@@ -63,6 +63,7 @@ call vundle#begin()
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'morhetz/gruvbox'
   Plugin 'altercation/vim-colors-solarized'
+  Plugin 'AlessandroYorba/Alduin'
 call vundle#end()
 
 filetype plugin indent on
@@ -84,7 +85,7 @@ set guifont=SauceCodePowerline-ExtraLight:h12
 syntax enable
 
 set background=dark
-colorscheme solarized
+colorscheme alduin
 
 set tabstop=2 shiftwidth=2
 set expandtab
@@ -109,6 +110,9 @@ autocmd WinLeave * setlocal nocursorline
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 autocmd BufRead * normal zR
+
+let g:alduin_Contract_Vampirism = 1
+let g:alduin_Shout_Fire_Breath = 1
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
