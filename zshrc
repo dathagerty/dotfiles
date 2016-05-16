@@ -48,7 +48,7 @@ BULLETTRAIN_RUBY_PREFIX="♦︎"
 
 export TERM="screen-256color"
 
-export RBENV_VERSION='2.2.3'
+export RBENV_VERSION='2.3.1'
 
 export EDITOR="vim"
 
