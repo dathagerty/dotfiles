@@ -1,3 +1,5 @@
+# LEGACY FILE - refer to ./zsh for new configuraton
+
 ### Aliases and functions, listed by purpose
 
 ## Homebrew aliases
@@ -46,8 +48,8 @@ alias ....="cd ../.."
 alias la="ls -la"
 alias lf="ls -AFG"
 
-function mcd { mkdir $1; cd $1; } 
-function cdl { cd $1; ls -a; } 
+function mcd { mkdir $1; cd $1; }
+function cdl { cd $1; ls -a; }
 function mct { mkdir $1; cd $1; touch $2; }
 
 ## Editing Aliases
@@ -65,10 +67,6 @@ alias tover="travis branches"
 alias tstat="travis status"
 alias tlive="travis logs"
 alias mc="mailcatcher"
-alias pgload="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-alias pgunload="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 ## Scripting Aliases
 

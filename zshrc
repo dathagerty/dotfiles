@@ -1,3 +1,5 @@
+## LEGACY FILE - refer to ./zsh/ for new configuraton
+
 ######################################################################
 #                                                                    #
 #                                                                    #
@@ -45,6 +47,7 @@ antigen apply
 BULLETTRAIN_RUBY_BG="red"
 BULLETTRAIN_RUBY_FG="black"
 BULLETTRAIN_RUBY_PREFIX="♦︎"
+BULLETTRAIN_DIR_FG="black"
 
 export TERM="screen-256color"
 
