@@ -29,3 +29,5 @@ build/
 *.xcodeproj/xcuserdata/*
 *.xcodeproj/project.xcworkspace/xcuserdata/*
 .idea
+.history
+.zcompdump
