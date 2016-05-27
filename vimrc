@@ -1,12 +1,12 @@
-" ========================================================"
-"                    Vim Configuration
-"
-"
-"                  Author: David Hagerty
-"              
-"       My configuration for Vim, lovingly crafted.
-"       
-" ======================================================="
+"========================================================="
+"                    Vim Configuration                    "
+"                                                         "
+"                                                         "
+"                  Author: David Hagerty                  "
+"                                                         "
+"       My configuration for Vim, lovingly crafted.       "
+"                                                         "
+"========================================================="
 let mapleader = "\<Space>"
 
 imap <C-[> <esc>:w<cr>
@@ -14,6 +14,7 @@ imap <C-[> <esc>:w<cr>
 nmap <leader>vr :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>h :nohlsearch<CR>
+nmap <leader>b :TagbarToggle<CR>
 
 nnoremap <expr> { len(getline(line('.')-1)) > 0 ? '{+' : '{-'
 nnoremap <expr> } len(getline(line('.')+1)) > 0 ? '}-' : '}+'
@@ -54,6 +55,7 @@ call vundle#begin()
   Plugin 'scrooloose/syntastic'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'majutsushi/tagbar'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'Shougo/neocomplete.vim'
   Plugin 'tweekmonster/braceless.vim'
@@ -62,6 +64,7 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'morhetz/gruvbox'
+  Plugin 'dracula/vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -78,12 +81,9 @@ set colorcolumn=+1
 
 set encoding=utf-8 nobomb
 
-set guifont=SauceCodePowerline-ExtraLight:h12
+syntax on
 
-syntax enable
-
-set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 set tabstop=2 shiftwidth=2
 set expandtab
@@ -101,7 +101,7 @@ set linebreak
 set cursorline
 set cursorcolumn
 
-autocmd WinEnter * :set relativenumber
+set relativenumber
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 autocmd FileType ruby,haml,yaml,coffee BracelessEnable +fold +highlight
