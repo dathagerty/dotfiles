@@ -103,17 +103,17 @@ alias doma="docker-machine"
 alias dcr="docker-compose run"
 
 ## Rails Aliases
-
-alias r="rails"
-alias routes="rake routes"
-alias rc="rails console"
-alias rs="rails server"
+alias be="bundle exec"
+alias r="bundle exec rails"
+alias routes="bundle exec rake routes"
+alias rc="bundle exec rails console"
+alias rs="bundle exec rails server"
 function routes_for { rake routes | grep $1; }
 
 ## Tmux Aliases
-alias tat="tmux attach -t"
-alias tswitch="tmux switch -t"
-alias tsession="tmux new-session -s $PWD"
+alias at="tmux attach -t"
+alias switch="tmux switch -t"
+alias ts="tmux new-session -s $PWD"
 
 ## Navigation Aliases
 
@@ -138,6 +138,7 @@ alias tover="travis branches"
 alias tstat="travis status"
 alias tlive="travis logs"
 alias mc="mailcatcher"
+alias wiki="gollum --host 127.0.0.1"
 
 ## Scripting Aliases
 

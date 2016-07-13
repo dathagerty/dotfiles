@@ -1,13 +1,13 @@
 #!/bin/zsh --no-rcs
-# cbarrick's awesome prompt theme
+# david's awesome prompt theme
 
-function prompt_cbarrick_help {
+function prompt_david_help {
 	cat<<'EOF'
-Usage: prompt cbarrick [<prompt-color=green> [<info-color=blue> [<error-color=red>]]]
+Usage: prompt david [<prompt-color=green> [<info-color=blue> [<error-color=red>]]]
 EOF
 }
 
-function prompt_cbarrick_setup {
+function prompt_david_setup {
 	autoload -Uz add-zsh-hook
 	autoload -Uz vcs_info
 
@@ -24,29 +24,29 @@ function prompt_cbarrick_setup {
 	local non_vcs_path="%1~"  # The name of the current directory
 
 	# Configure vcs_info
-	# These options determine the value of `$vcs_info_msg_0_` after running `vcs_info cbarrick`.
+	# These options determine the value of `$vcs_info_msg_0_` after running `vcs_info david`.
 	# The prompt is reset to `$vcs_info_msg_0_` after every command--these options set the prompt.
 
 	## Determines the value when inside a version controled directory
-	zstyle ':vcs_info:*:cbarrick:*' formats \
+	zstyle ':vcs_info:*:david:*' formats \
 		"${project}:${branch} ${vcs_path}"
 
 	## Determines the value during a merge, rebase, etc
-	zstyle ':vcs_info:*:cbarrick:*' actionformats \
+	zstyle ':vcs_info:*:david:*' actionformats \
 		"${project}:${branch}${action} ${vcs_path}"
 
 	## Determines the value when outside of version control
-	zstyle ':vcs_info:*:cbarrick:*' nvcsformats \
+	zstyle ':vcs_info:*:david:*' nvcsformats \
 		"${non_vcs_path}"
 
 	# To avoid conflicts with other uses of vcs_info, we reset the $PROMPT for every command
 	function set_prompt {
 		local main="%(?.%(1j.%F{${prompt_csb_color_info}}[:%j].).%F{${prompt_csb_color_err}}[%?%(1j.:%j.)])%#%f "
-		vcs_info cbarrick
+		vcs_info david
 		PROMPT="${vcs_info_msg_0_} ${main}"
 		RPROMPT=${SSH_CONNECTION:+ %m}
 	}
 	add-zsh-hook precmd set_prompt
 }
 
-prompt_cbarrick_setup "$@"
+prompt_david_setup "$@"
