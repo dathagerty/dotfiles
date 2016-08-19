@@ -24,10 +24,11 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 filetype off
 
@@ -46,7 +47,8 @@ call vundle#begin()
   Plugin 'tpope/vim-rbenv'
   Plugin 'tpope/vim-bundler'
   Plugin 'tpope/vim-endwise'
-  Plugin 'tpope/vim-dispatch'
+  Plugin 'janko-m/vim-test'
+  Plugin 'benmills/vimux'
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'tomtom/tlib_vim'
   Plugin 'vim-ruby/vim-ruby'
@@ -63,7 +65,6 @@ call vundle#begin()
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'thoughtbot/vim-rspec'
-  Plugin 'morhetz/gruvbox'
   Plugin 'dracula/vim'
 call vundle#end()
 
@@ -114,6 +115,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+let test#strategy = 'vimux'
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -122,6 +125,3 @@ let g:ctrlp_use_caching = 0
 
 let g:syntastic_aggregate_errors=1
 let g:syntastic_auto_loc_list=1
-
-let g:rspec_command="bundle exec rspec {spec}"
-let g:rspec_runner="os_x_iterm2"

@@ -104,16 +104,15 @@ alias dcr="docker-compose run"
 
 ## Rails Aliases
 alias be="bundle exec"
-alias r="bundle exec rails"
-alias routes="bundle exec rake routes"
-alias rc="bundle exec rails console"
-alias rs="bundle exec rails server"
-function routes_for { rake routes | grep $1; }
+alias r="bin/rails"
+alias routes="bin/rails routes"
+alias rc="bin/rails console"
+alias rs="bbin/rails server"
 
 ## Tmux Aliases
 alias at="tmux attach -t"
 alias switch="tmux switch -t"
-alias ts="tmux new-session -s $PWD"
+alias tnew="tmux new-session -c $PWD"
 
 ## Navigation Aliases
 
@@ -155,8 +154,6 @@ export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export NODE_PATH=/usr/local/lib/node
 
 . `brew --prefix`/etc/profile.d/z.sh
-
-source /Users/david/.secrets
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 

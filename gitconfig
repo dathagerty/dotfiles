@@ -58,6 +58,8 @@
 	bd = branch -d
   f = fetch
   p = push
+	po = push origin
+	pm = push origin master
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	branches = branch -a
 	remotes = remote -v

@@ -16,6 +16,8 @@ coffeelint.json
 .rubocop.yml
 .swo
 vim/.netrwhist
+dump.rdb
+git_stats/**/*
 
 log/*
 
