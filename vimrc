@@ -65,8 +65,11 @@ call vundle#begin()
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'thoughtbot/vim-rspec'
+  Plugin 'junegunn/fzf.vim'
   Plugin 'dracula/vim'
 call vundle#end()
+
+set rtp+=/usr/local/opt/fzf
 
 filetype plugin indent on
 
@@ -125,3 +128,5 @@ let g:ctrlp_use_caching = 0
 
 let g:syntastic_aggregate_errors=1
 let g:syntastic_auto_loc_list=1
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)

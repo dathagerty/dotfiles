@@ -13,14 +13,7 @@ unsetopt global_rcs
 ZDOTDIR=${HOME}/.zsh
 export ZDOTDIR
 
-
-# Host-specific envirnonment
-#--------------------
-
-if [[ -e ${ZDOTDIR}/env/$(hostname) ]]; then
-	source ${ZDOTDIR}/env/$(hostname)
-fi
-
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Path
 #--------------------

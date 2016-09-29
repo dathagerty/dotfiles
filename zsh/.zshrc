@@ -78,8 +78,7 @@ setopt zle # Use ZLE. This is default, but I like to be explicit
 alias sed="sed -r"
 alias ls="ls -a -l --human-readable --classify --group-directories-first --color=auto"
 alias mkdir="mkdir -p"
-alias grep="grep --extended-regexp --no-messages --binary-files=without-match \
-                 --line-number --color"
+alias grep="grep --extended-regexp --no-messages --binary-files=without-match --line-number --color"
 
 ## Homebrew Aliases
 
@@ -93,8 +92,7 @@ alias cask="brew cask"
 
 alias g="git"
 alias git=hub
-alias gpo="git push origin"
-alias gpm="git push origin master"
+alias push="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 
 ## Docker Aliases
 
@@ -103,21 +101,24 @@ alias doma="docker-machine"
 alias dcr="docker-compose run"
 
 ## Rails Aliases
+
 alias be="bundle exec"
 alias r="bin/rails"
 alias routes="bin/rails routes"
 alias rc="bin/rails console"
-alias rs="bbin/rails server"
+alias rs="bin/rails server"
+
+## Java Aliases
+
+function jc { javac -verbose -d $1 -s $1 -h $1 $2 }
 
 ## Tmux Aliases
+
 alias at="tmux attach -t"
 alias switch="tmux switch -t"
 alias tnew="tmux new-session -c $PWD"
 
 ## Navigation Aliases
-
-# alias la="ls -la"
-# alias lf="ls -AFG"
 
 function mcd { mkdir $1; cd $1; }
 function cdl { cd $1; ls -a; }
@@ -125,7 +126,7 @@ function mct { mkdir $1; cd $1; touch $2; }
 
 ## Editing Aliases
 
-alias vim="/usr/local/Cellar/macvim/7.*/MacVim.app/Contents/MacOS/Vim"
+alias vim="/usr/local/Cellar/macvim/8.*/MacVim.app/Contents/MacOS/Vim"
 
 ## Network Aliases
 
@@ -141,8 +142,8 @@ alias wiki="gollum --host 127.0.0.1"
 
 ## Scripting Aliases
 
-alias py26="python"
-alias pyi3="python3"
+alias p="python"
+alias p3="python3"
 alias rb="ruby"
 
 alias koans="cd ~/code/Ruby/koans/; ruby path_to_enlightenment.rb"
@@ -150,7 +151,6 @@ alias koans="cd ~/code/Ruby/koans/; ruby path_to_enlightenment.rb"
 
 # Environment
 #--------------------
-export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export NODE_PATH=/usr/local/lib/node
 
 . `brew --prefix`/etc/profile.d/z.sh
@@ -163,10 +163,11 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /Users/david/.iterm2_shell_integration.zsh
 
 # Core tools
+LESS="-RSMsi"
 EDITOR="vim"
 VISUAL="vim"
 PAGER="less"
-export EDITOR VISUAL PAGER
+export LESS EDITOR VISUAL PAGER
 
 # History
 #--------------------
@@ -298,3 +299,5 @@ fi
 #--------------------
 
 print "\r${USER} @ ${HOST}"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

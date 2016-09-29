@@ -1,6 +1,7 @@
 [user]
 	name = David Hagerty
 	email = hagerty9009@gmail.com
+	signingkey = 1ED782264C3F7784
 
 [color]
 	ui = 1
@@ -34,10 +35,17 @@
   # they are grouped by common prefixes, so I don't
   # confuse what I want done by accident.
   c = commit -v
-  cm = commit -m
-  cma = commit -a -m
-	ca = commit -a
-	ci = commit -a -m "Initial Commit"
+  cm = commit -v -m
+  cma = commit -v -a -m
+	ca = commit -v -a
+	ci = commit -v -a -m "Initial commit"
+
+  # Sign commits
+  cs = commit -v -S
+  cms = commit -v -S -m
+  cmsa = commit -v -S -a -m
+  csa = commit -v -a
+  csi = commit -v -a -m "Initial commit"
 
   # soft resets
   r = reset
@@ -68,7 +76,6 @@
 
 [github]
 	user = dhagerty9009
-	token = $GITHUB_TOKEN
 
 [credential]
 	helper = osxkeychain
@@ -93,7 +100,7 @@
     insteadOf = bb:
 
 [branch]
-	autosetupmerge = always
+	autosetupmerge = true
 	autosetuprebase = always
 [rerere]
 	enabled = true
