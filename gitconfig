@@ -1,7 +1,7 @@
 [user]
 	name = David Hagerty
 	email = hagerty9009@gmail.com
-	signingkey = 1ED782264C3F7784
+	signingkey = 7323D96EE09C06EF
 
 [color]
 	ui = 1
@@ -73,6 +73,7 @@
 	remotes = remote -v
 	tags = tag -l
 	ctags = !.git/hooks/ctags
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
 [github]
 	user = dhagerty9009
@@ -106,9 +107,9 @@
 	enabled = true
 	autoupdate = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	clean = git-lfs clean -- %f
 [push]
 	default = matching
 [init]
@@ -118,3 +119,5 @@
 [mergetool]
 	conflictstyle = diff3
 	prompt = false
+[hub]
+	protocol = git

@@ -14,6 +14,7 @@ ZDOTDIR=${HOME}/.zsh
 export ZDOTDIR
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export GOPATH=$HOME/code/go
 
 # Path
 #--------------------

@@ -92,7 +92,7 @@ alias cask="brew cask"
 
 alias g="git"
 alias git=hub
-alias push="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+# function push { branch = $(git rev-parse --abbrev-ref HEAD); git push origin $branch; }
 
 ## Docker Aliases
 
@@ -139,6 +139,7 @@ alias tstat="travis status"
 alias tlive="travis logs"
 alias mc="mailcatcher"
 alias wiki="gollum --host 127.0.0.1"
+alias love="/Applications/love.app/Contents/MacOS/love"
 
 ## Scripting Aliases
 
@@ -201,8 +202,8 @@ bindkey -e
 # Prompt
 #--------------------
 
-autoload -Uz promptinit && promptinit
-prompt cbarrick
+autoload -Uz promptinit; promptinit
+prompt pure
 
 
 # Completion

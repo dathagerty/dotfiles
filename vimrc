@@ -67,6 +67,7 @@ call vundle#begin()
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'junegunn/fzf.vim'
   Plugin 'dracula/vim'
+  Plugin 'alessandroyorba/despacio'
 call vundle#end()
 
 set rtp+=/usr/local/opt/fzf
@@ -87,7 +88,7 @@ set encoding=utf-8 nobomb
 
 syntax on
 
-colorscheme dracula
+colorscheme despacio
 
 set tabstop=2 shiftwidth=2
 set expandtab
