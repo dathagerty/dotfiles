@@ -134,10 +134,6 @@ alias ntest="ping -n -c 1000 www.google.com"
 
 ## Application Aliases
 
-alias tover="travis branches"
-alias tstat="travis status"
-alias tlive="travis logs"
-alias mc="mailcatcher"
 alias wiki="gollum --host 127.0.0.1"
 alias love="/Applications/love.app/Contents/MacOS/love"
 
@@ -157,8 +153,7 @@ export NODE_PATH=/usr/local/lib/node
 . `brew --prefix`/etc/profile.d/z.sh
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-[ -f /Users/david/.travis/travis.sh ] && source /Users/david/.travis/travis.sh
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /Users/david/.iterm2_shell_integration.zsh

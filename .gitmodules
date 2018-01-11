@@ -4,3 +4,6 @@
 [submodule "tpm"]
   path = tmux/plugins/tpm
   url = https://github.com/tmux-plugins/tpm
+[submodule "pure"]
+	path = pure
+	url = https://github.com/sindresorhus/pure.git

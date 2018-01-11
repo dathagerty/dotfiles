@@ -5,3 +5,5 @@ ${HOME}/.local/bin
 /usr/local/opt/gnu-sed/libexec/gnubin
 /usr/local/opt/ruby/bin
 /Applications/Postgres.app/Contents/Versions/latest/bin
+${HOME}/.rbenv/bin
+${HOME}/.pyenv/bin
