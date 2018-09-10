@@ -3,7 +3,7 @@
 port                    "6000"
 bind_to_address         "127.0.0.1"
 
-music_directory         "/Users/david/Desktop/Music"
+music_directory         "/Users/david/coding_music"
 playlist_directory      "~/.mpd/playlists"
 db_file                 "~/.mpd/mpd.db"
 log_file                "~/.mpd/mpd.log"

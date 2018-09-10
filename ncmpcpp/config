@@ -13,7 +13,7 @@
 ## file which defines that while launching ncmpcpp.
 ##
 #
-#ncmpcpp_directory = ~/.ncmpcpp
+ncmpcpp_directory = ~/.ncmpcpp
 #
 ##
 ## Directory for storing downloaded lyrics. It
@@ -21,7 +21,7 @@
 ## (eg. ncmpc) also use that location.
 ##
 #
-#lyrics_directory = ~/.ncmpcpp/lyrics
+lyrics_directory = ~/.ncmpcpp/lyrics
 #
 ##### connection settings #####
 #
@@ -33,7 +33,7 @@ mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
 ##
-#mpd_music_dir = ~/music
+mpd_music_dir = ~/coding_music
 #
 #mpd_crossfade_time = 5
 #
