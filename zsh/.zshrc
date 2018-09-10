@@ -92,6 +92,7 @@ alias cask="brew cask"
 
 alias g="git"
 alias git=hub
+alias glog="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
 # function push { branch = $(git rev-parse --abbrev-ref HEAD); git push origin $branch; }
 
 ## Docker Aliases
