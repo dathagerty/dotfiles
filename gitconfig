@@ -1,7 +1,7 @@
 [user]
 	name = David Hagerty
 	email = hagerty9009@gmail.com
-	signingkey = 7323D96EE09C06EF
+	signingkey = 5E5A73A8AC2929F4
 
 [color]
 	ui = 1
@@ -14,66 +14,128 @@
 	excludesfile = /Users/David/.gitignore
 	editor = "vim"
 
-[merge "railsschema"]
-  name = newer Rails schema version
-	driver = "ruby -e '\n\
-    system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
-    b = File.read(%(%A))\n\
-    b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
-      %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
-    end\n\
-    File.open(%(%A), %(w)) {|f| f.write(b)}\n\
-    exit 1 if b.include?(%(<)*%L)'"
-
 [alias]
-  # Adding files to staging
+  # -------
+  # Staging
+	# -------
+
+	# Interactively add files (or chunks) to staging
   ai = add --interactive
+
+	# Add specific files to staging by file name
+	# Usage: g(it) a <filename(s)>
 	a = add
+
+	# Add all files to the staging area
 	aa = add .
 
-  # All the aliases relate to commits. Note that
-  # they are grouped by common prefixes, so I don't
-  # confuse what I want done by accident.
+  # ----------
+  # Commitment
+  # ----------
+
+	# Basic commit, opens $EDITOR to write a commit message
   c = commit -v
-  cm = commit -v -m
-  cma = commit -v -a -m
-	ca = commit -v -a
-	ci = commit -v -a -m "Initial commit"
 
-  # Sign commits
-  cs = commit -v -S
-  cms = commit -v -S -m
-  cmsa = commit -v -S -a -m
-  csa = commit -v -a
-  csi = commit -v -a -m "Initial commit"
+	# Basic commit with a message from the command-line
+	# Usage: g(it) cm "This is a bad commit message"
+  cm = commit -vm
 
-  # soft resets
+	# Auto-stage modified tracked files and commit with a message from the command line
+	# Usage: g(it) cma "This is a bad commit message"
+  cma = commit -vam
+
+  # Auto-stage modified tracked files and commit with $EDITOR
+	ca = commit -va
+  
+	# Auto-stage modified tracked files and commit with an initial commit message
+	ci = commit -vam "Initial commit"
+
+  # --------------
+  # Signed Commits
+	# --------------
+
+	# These are variants of the above commands that sign commits with my GPG key.
+	# The commands include the `-S` flag on top of the normal shortcuts.
+
+  cs = commit -Sv
+  cms = commit -Svm
+  cmsa = commit -Svam
+  csa = commit -Sva
+  csi = commit -Svam "Initial commit"
+
+  # -----------
+  # Soft Resets
+  # -----------
+
+	# General shorthand for a reset. You must still specify a target revision.
+	# It will also still take command line flags like `--soft` or `--mixed`
+	# Usage: g(it) r [--soft] <target>
   r = reset
+
+	# Reset to the first parent commit on HEAD
   r1 = reset HEAD^
+
+	# Reset to the second parent (grandparent) commit on HEAD
   r2 = reset HEAD^^
 
-	# hard resets
+	# -----------
+	# Hard Resets
+	# -----------
+
+	# These resets are the same as above, but are hard (destructive) resets.
+	# This is where the nuclear weapons are stored.
+
   rh = reset --hard
   rh1 = reset --hard HEAD^
   rh2 = reset --hard HEAD^^
 
-  # shortcuts for commands
-  st = status -sb
-  d = diff
-  co = checkout
+  # -----------------
+	# General Shortcuts
+	# -----------------
+  
+	# Show status of modified files, and show the remote branch the local branch is tracking.
+	st = status -sb
+  
+	d = diff
+  
+	# Save characters, save the world
+	# Usage: g(it) co <name>
+	co = checkout
+	
+	# Create a branch and checkout that branch
+	# Usage: g(it) cb <name>
 	cb = checkout -b
-  b = branch
+  
+	# Create a branch in just one character
+	# Usage: g(it) b <name>
+	b = branch
+	
+	# Delete a branch in just two characters
+	# Usage: g(it) bd <name>
 	bd = branch -d
-  f = fetch
-  p = push
+  
+	f = fetch
+  
+	p = push
+	
 	po = push origin
+	
 	pm = push origin master
+	
+	# A prettier log output with short commit hashes
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	
+	# List all branches
 	branches = branch -a
+	
+	# List all remotes
 	remotes = remote -v
+	
+	# List all git tags
 	tags = tag -l
+	
+	# Run the ctags git hook - this generates ctags inside the local .git directory
 	ctags = !.git/hooks/ctags
-	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
 [github]
 	user = dhagerty9009
@@ -103,21 +165,36 @@
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
+
 [rerere]
 	enabled = true
 	autoupdate = true
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	required = true
 	clean = git-lfs clean -- %f
+
 [push]
 	default = matching
+
 [init]
 	templatedir = ~/.git_template
+
 [merge]
 	tool = vimdiff
+
 [mergetool]
 	conflictstyle = diff3
 	prompt = false
+	keepBackup = true
+
 [hub]
 	protocol = git
+
+[advice]
+  ignoredHook = false
+
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFXalse 
+  show = diff-so-fancy | less --tabs=1,5 -RFXalse
