@@ -33,6 +33,7 @@ nmap <leader>h :nohlsearch<CR>
 
 " Jump forwards by paragraph. Jumps to the beginning and then the end of 'paragraph'-type structures
 nnoremap <expr> { len(getline(line('.')-1)) > 0 ? '{+' : '{-'
+
 " Jump backwards by paragraph. Jumps to the end and then the beginning of 'paragraph'-type structures
 nnoremap <expr> } len(getline(line('.')+1)) > 0 ? '}-' : '}+'
 
@@ -55,23 +56,35 @@ call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
   " Better Ruby support in Vim
   Plugin 'vim-ruby/vim-ruby'
-  " Plugin 'tpope/vim-fugitive'
-  " Plugin 'tpope/vim-commentary'
-  " Plugin 'tpope/vim-rails'
-  " Plugin 'tpope/vim-surround'
-  " Plugin 'tpope/vim-unimpaired'
-  " Plugin 'tpope/vim-abolish'
-  " Plugin 'tpope/vim-repeat'
-  " Plugin 'tpope/vim-haml'
-  " Plugin 'tpope/vim-rbenv'
-  " Plugin 'tpope/vim-bundler'
-  " Plugin 'tpope/vim-endwise'
+  " The best git wrapper, period.
+  Plugin 'tpope/vim-fugitive'
+  " Easily handle comments
+  Plugin 'tpope/vim-commentary'
+  " Makes Rails and Vim best friends
+  Plugin 'tpope/vim-rails'
+  " Makes working with brackets, quotes, tags, etc easier
+  Plugin 'tpope/vim-surround'
+  " The secret sauce to make netrw better
+  Plugin 'tpope/vim-vinegar'
+  " Work with words better
+  Plugin 'tpope/vim-abolish'
+  " Better repeating support
+  Plugin 'tpope/vim-repeat'
+  " Haml support
+  Plugin 'tpope/vim-haml'
+  " Basic rbenv support
+  Plugin 'tpope/vim-rbenv'
+  " Bundler integration
+  Plugin 'tpope/vim-bundler'
+  " Support for auto-completing if/endif do/end type structures
+  Plugin 'tpope/vim-endwise'
   " Plugin 'ctrlpvim/ctrlp.vim'
   " Plugin 'wellle/targets.vim'
   " Plugin 'vim-scripts/closetag.vim'
   " Plugin 'scrooloose/syntastic'
   " Plugin 'majutsushi/tagbar'
-  " Plugin 'airblade/vim-gitgutter'
+  " Add git diff information to the gutter
+  Plugin 'airblade/vim-gitgutter'
   " Plugin 'jiangmiao/auto-pairs'
   " Plugin 'thoughtbot/vim-rspec'
   " Plugin 'junegunn/fzf.vim'
