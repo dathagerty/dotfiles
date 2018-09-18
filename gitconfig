@@ -11,8 +11,11 @@
 	mnemonicprefix = true
 
 [core]
-	excludesfile = /Users/David/.gitignore
+	excludesfile = ~/.gitignore
 	editor = "vim"
+
+[commit]
+	template = ~/.gitmessage
 
 [alias]
   # -------
