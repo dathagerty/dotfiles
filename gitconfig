@@ -41,17 +41,17 @@
 
 	# Basic commit with a message from the command-line
 	# Usage: g(it) cm "This is a bad commit message"
-  cm = commit -vm
+  cm = commit -v -m
 
 	# Auto-stage modified tracked files and commit with a message from the command line
 	# Usage: g(it) cma "This is a bad commit message"
-  cma = commit -vam
+  cma = commit -v -a -m
 
   # Auto-stage modified tracked files and commit with $EDITOR
-	ca = commit -va
+	ca = commit -v -a
   
 	# Auto-stage modified tracked files and commit with an initial commit message
-	ci = commit -vam "Initial commit"
+	ci = commit -v -a -m "Initial commit"
 
   # --------------
   # Signed Commits
@@ -60,11 +60,11 @@
 	# These are variants of the above commands that sign commits with my GPG key.
 	# The commands include the `-S` flag on top of the normal shortcuts.
 
-  cs = commit -Sv
-  cms = commit -Svm
-  cmsa = commit -Svam
-  csa = commit -Sva
-  csi = commit -Svam "Initial commit"
+  cs = commit -S -v
+  cms = commit -S -v -m
+  cmsa = commit -S -v -a -m
+  csa = commit -S -v -a
+  csi = commit -S -v -a -m "Initial commit"
 
   # -----------
   # Soft Resets
@@ -199,5 +199,5 @@
   ignoredHook = false
 
 [pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFXalse 
-  show = diff-so-fancy | less --tabs=1,5 -RFXalse
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
