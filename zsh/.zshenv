@@ -16,6 +16,9 @@ export ZDOTDIR
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export GOPATH=$HOME/code/go
 
+export CPLUS_INCLUDE_PATH=/usr/local/include
+export LIBRARY_PATH=/usr/local/lib
+
 # Path
 #--------------------
 # Sets path in a way similar to path_helper(8) on OS X
