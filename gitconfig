@@ -48,17 +48,17 @@
   cma = commit -v -a -m
 
   # Auto-stage modified tracked files and commit with $EDITOR
-	ca = commit -v -a
+  ca = commit -v -a
   
 	# Auto-stage modified tracked files and commit with an initial commit message
-	ci = commit -v -a -m "Initial commit"
+  ci = commit -v -a -m "Initial commit"
 
   # --------------
   # Signed Commits
-	# --------------
+  # --------------
 
-	# These are variants of the above commands that sign commits with my GPG key.
-	# The commands include the `-S` flag on top of the normal shortcuts.
+  # These are variants of the above commands that sign commits with my GPG key.
+  # The commands include the `-S` flag on top of the normal shortcuts.
 
   cs = commit -S -v
   cms = commit -S -v -m
