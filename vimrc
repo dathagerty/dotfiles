@@ -19,9 +19,6 @@
 " Set the Leader key to the spacebar
 let mapleader = "\<Space>"
 
-" When in Insert mode, <Control>+[ will exit Insert mode and save changes.
-imap <C-[> <esc>:w<CR>
-
 " Open this file for editing anywhere you are
 nmap <leader>vr :sp $MYVIMRC<CR>
 
