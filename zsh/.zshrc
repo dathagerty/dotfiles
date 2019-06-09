@@ -79,6 +79,7 @@ alias sed="sed -r"
 alias ls="ls -a -l --human-readable --classify --group-directories-first --color=auto"
 alias mkdir="mkdir -p"
 alias grep="grep --extended-regexp --no-messages --binary-files=without-match --line-number --color"
+alias cat=bat
 
 ## Homebrew Aliases
 
@@ -144,9 +145,6 @@ alias p="python"
 alias p3="python3"
 alias rb="ruby"
 
-alias koans="cd ~/code/Ruby/koans/; ruby path_to_enlightenment.rb"
-
-
 # Environment
 #--------------------
 export NODE_PATH=/usr/local/lib/node
@@ -177,7 +175,6 @@ export HISTSIZE HISTFILE SAVEHIST
 
 # Keyboard
 #--------------------
-
 autoload -Uz zkbd
 [[ ! -f ${ZDOTDIR}/zkbd/${TERM} ]] && zkbd
 source ${ZDOTDIR}/zkbd/${TERM}

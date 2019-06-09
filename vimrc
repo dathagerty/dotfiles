@@ -28,10 +28,10 @@ nmap <leader>so :source $MYVIMRC<CR>
 " Search without highlighting
 nmap <leader>h :nohlsearch<CR>
 
-" Jump forwards by paragraph. Jumps to the beginning and then the end of 'paragraph'-type structures
+" Jump forwards by paragraph. Jumps to the beginning then the end of 'paragraph'-type structures
 nnoremap <expr> { len(getline(line('.')-1)) > 0 ? '{+' : '{-'
 
-" Jump backwards by paragraph. Jumps to the end and then the beginning of 'paragraph'-type structures
+" Jump backwards by paragraph. Reverse of the above mapping
 nnoremap <expr> } len(getline(line('.')+1)) > 0 ? '}-' : '}+'
 
 " Disable arrow keys to encourage Vim's own movement paradigms
@@ -51,37 +51,50 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Let Vundle manage itself
   Plugin 'gmarik/Vundle.vim'
+  
   " Better Ruby support in Vim
   Plugin 'vim-ruby/vim-ruby'
+  
   " The best git wrapper, period.
   Plugin 'tpope/vim-fugitive'
+  
   " Easily handle comments
   Plugin 'tpope/vim-commentary'
+  
   " Makes Rails and Vim best friends
   Plugin 'tpope/vim-rails'
+  
   " Makes working with brackets, quotes, tags, etc easier
   Plugin 'tpope/vim-surround'
+  
   " The secret sauce to make netrw better
   Plugin 'tpope/vim-vinegar'
+  
   " Work with words better
   Plugin 'tpope/vim-abolish'
+  
   " Better repeating support
   Plugin 'tpope/vim-repeat'
+  
   " Haml support
   Plugin 'tpope/vim-haml'
+  
   " Basic rbenv support
   Plugin 'tpope/vim-rbenv'
+  
   " Bundler integration
   Plugin 'tpope/vim-bundler'
+  
   " Support for auto-completing if/endif do/end type structures
   Plugin 'tpope/vim-endwise'
+  
+  " Add git diff information to the gutter
+  Plugin 'airblade/vim-gitgutter'
   " Plugin 'ctrlpvim/ctrlp.vim'
   " Plugin 'wellle/targets.vim'
   " Plugin 'vim-scripts/closetag.vim'
   " Plugin 'scrooloose/syntastic'
   " Plugin 'majutsushi/tagbar'
-  " Add git diff information to the gutter
-  Plugin 'airblade/vim-gitgutter'
   " Plugin 'jiangmiao/auto-pairs'
   " Plugin 'thoughtbot/vim-rspec'
   " Plugin 'junegunn/fzf.vim'
