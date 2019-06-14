@@ -172,26 +172,6 @@ HISTFILE=${ZDOTDIR}/.history
 SAVEHIST=$HISTSIZE
 export HISTSIZE HISTFILE SAVEHIST
 
-
-# Keyboard
-#--------------------
-autoload -Uz zkbd
-[[ ! -f ${ZDOTDIR}/zkbd/${TERM} ]] && zkbd
-source ${ZDOTDIR}/zkbd/${TERM}
-
-bindkey -e
-[[ -n "${key[Home]}"       ]] && bindkey "${key[Home]}"       beginning-of-line
-[[ -n "${key[End]}"        ]] && bindkey "${key[End]}"        end-of-line
-[[ -n "${key[Insert]}"     ]] && bindkey "${key[Insert]}"     overwrite-mode
-[[ -n "${key[Delete]}"     ]] && bindkey "${key[Delete]}"     delete-char
-[[ -n "${key[Up]}"         ]] && bindkey "${key[Up]}"         up-line-or-search
-[[ -n "${key[Down]}"       ]] && bindkey "${key[Down]}"       down-line-or-search
-[[ -n "${key[Left]}"       ]] && bindkey "${key[Left]}"       backward-char
-[[ -n "${key[Right]}"      ]] && bindkey "${key[Right]}"      forward-char
-[[ -n "${key[Ctrl-Left]}"  ]] && bindkey "${key[Ctrl-Left]}"  backward-word
-[[ -n "${key[Ctrl-Right]}" ]] && bindkey "${key[Ctrl-Right]}" forward-word
-
-
 # Prompt
 #--------------------
 
