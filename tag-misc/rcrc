@@ -1,2 +1,2 @@
-EXCLUDES="README.md Brewfile install.sh setup-dots.sh"
+EXCLUDES="README.md Brewfile install.sh setup-dots.sh zsh git_template"
 TAGS="zsh vim git misc"
