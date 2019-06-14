@@ -1,0 +1,2 @@
+EXCLUDES="README.md Brewfile install.sh setup-dots.sh"
+TAGS="zsh vim git misc"

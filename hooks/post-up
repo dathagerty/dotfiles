@@ -1,0 +1,9 @@
+#! /bin/sh
+
+if [ ! -e "$HOME/.zsh" ]; then
+    rm -rf "$HOME/.zsh" >> /dev/null && ln -s "$HOME/.dotfiles/zsh" "$HOME/.zsh"
+fi
+
+if [ ! -e "$HOME/.git_template" ]; then
+    rm -rf "$HOME/.git_template">> /dev/null && ln -s "$HOME/.dotfiles/git_template" "$HOME/.git_template"
+fi
