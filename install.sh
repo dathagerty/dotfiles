@@ -32,6 +32,10 @@ echo "\n ▶️ Installing brew dependencies\n"
 
 brew bundle --file="$HOME/.dotfiles/Brewfile"
 
+echo "\n ▶️ Setting up local configuration\n"
+
+RCRC="$HOME/.dotfiles/tag-misc/rcrc rcup -v"
+
 echo "\n ▶️ Setting up vim\n"
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -42,3 +46,4 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 nvm --version >> /dev/null && nvm install node
 npm install -g pure-prompt
+
