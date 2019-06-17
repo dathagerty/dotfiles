@@ -47,3 +47,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 nvm --version >> /dev/null && nvm install node
 npm install -g pure-prompt
 
+echo "\n ▶️ Setting up system git\n"
+git config --system user.name $NAME
+git config --system user.email $EMAIL
