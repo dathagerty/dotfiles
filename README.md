@@ -19,4 +19,4 @@ My tools:
 
 ### Less Easy
 
-* Clone this repository and run `./install.sh` (you may need to `chomd +x` it).
+* Clone this repository and run `./install.sh` (you may need to `chmod +x` it).
