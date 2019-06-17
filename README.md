@@ -13,11 +13,10 @@ My tools:
 
 ## Installation
 
-1. Clone this repository
-2. Install Homebrew
-3. Install needed programs with Homebrew
-4. Set zsh as the default shell
-5. Install rbenv
-6. Install pyenv
-7. Symlink needed files from this directory
-8. Ensure everything works properly.
+### Easiest
+
+* Run `curl -fsSL https://raw.githubusercontent.com/dhagerty9009/dotfiles/master/install.sh | bash`
+
+### Less Easy
+
+* Clone this repository and run `./install.sh` (you may need to `chomd +x` it).
