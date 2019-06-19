@@ -1,4 +1,4 @@
-!# /bin/sh
+#! /bin/sh
 
 # Install Homebrew
 echo "Let's set up your laptop.\nWe will start with git.\n"
@@ -20,7 +20,6 @@ else
 fi
 
 echo "\n ▶️ Cloning dotfiles\n"
-
 if [ ! -e ~/.dotfiles ]; then
     #git clone "https://github.com/dhagerty9009/dotfiles.git" ~/.dotfiles
     echo "Dotfiles are not present on this computer"
@@ -29,21 +28,19 @@ else
 fi
 
 echo "\n ▶️ Installing brew dependencies\n"
-
 brew bundle --file="$HOME/.dotfiles/Brewfile"
 
 echo "\n ▶️ Setting up local configuration\n"
-
-RCRC="$HOME/.dotfiles/tag-misc/rcrc rcup -v"
+RCRC="$HOME/.dotfiles/tag-misc/rcrc" rcup -v
 
 echo "\n ▶️ Setting up vim\n"
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-echo "-- You must run `vim +PluginInstall` once this script has finished running --"
+if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    echo "-- You must run `vim +PluginInstall` once this script has finished running --"
+fi
 
 echo "\n ▶️ Installing NVM and Node\n"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-
 nvm --version >> /dev/null && nvm install node
 npm install -g pure-prompt
 
