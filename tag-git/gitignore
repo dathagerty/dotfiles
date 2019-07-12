@@ -33,3 +33,5 @@ build/
 .idea
 .history
 .zcompdump
+
+.vscode/*

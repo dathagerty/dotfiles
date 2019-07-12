@@ -12,12 +12,7 @@ echo "\n ▶️ Setting up XCode CLT\n"
 xcode-select --install
 
 echo "\n ▶ Installing Homebrew\n"
-if [ brew -v >> /dev/null ]; then
-    echo "Homebrew is already installed"
-else
-    #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    echo "Homebrew not installed"
-fi
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "\n ▶️ Cloning dotfiles\n"
 if [ ! -e ~/.dotfiles ]; then

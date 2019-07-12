@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 ######################################################################
 #                                                                    #
 #                                                                    #
@@ -11,7 +12,7 @@
 #                     For Increased Productivity                     #
 #                       And Incredible Utility                       #
 #                                                                    #
-#                              (c) 2016                              #
+#                              (c) 2019                              #
 #                                                                    #
 #                                                                    #
 #                                                                    #
@@ -94,7 +95,6 @@ alias cask="brew cask"
 alias g="git"
 alias git=hub
 alias glog="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
-# function push { branch = $(git rev-parse --abbrev-ref HEAD); git push origin $branch; }
 
 ## Docker Aliases
 
@@ -128,16 +128,12 @@ function mct { mkdir $1; cd $1; touch $2; }
 
 ## Editing Aliases
 
-alias vim="/usr/local/Cellar/macvim/8.*/MacVim.app/Contents/MacOS/Vim"
+alias v="vim"
+alias vim=nvim
 
 ## Network Aliases
 
 alias ntest="ping -n -c 1000 www.google.com"
-
-## Application Aliases
-
-alias wiki="gollum --host 127.0.0.1"
-alias love="/Applications/love.app/Contents/MacOS/love"
 
 ## Scripting Aliases
 
@@ -155,12 +151,12 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /Users/david/.iterm2_shell_integration.zsh
+source ${HOME}/.iterm2_shell_integration.zsh
 
 # Core tools
 LESS="-RSMsi"
-EDITOR="vim"
-VISUAL="vim"
+EDITOR="nvim"
+VISUAL="nvim"
 PAGER="less"
 export LESS EDITOR VISUAL PAGER
 
@@ -183,6 +179,9 @@ prompt pure
 #--------------------
 
 autoload -Uz compinit && compinit -u
+
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 zstyle ':completion:*' use-cache true # Cache completion to `${ZDOTDIR}/.zcompcache`
 zstyle ':completion:*' squeeze-slashes true # Strip slashes from directories

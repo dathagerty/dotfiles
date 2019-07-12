@@ -11,6 +11,7 @@
 
 [commit]
 	template = ~/.gitmessage
+	gpgsign = true
 
 [alias]
   # -------

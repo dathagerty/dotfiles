@@ -61,4 +61,6 @@ cdpath=(
 	${cdpath}
 )
 
+. $(brew --prefix asdf)/asdf.sh
+
 export path manpath fpath cdpath
