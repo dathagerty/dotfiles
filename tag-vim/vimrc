@@ -51,28 +51,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Let Vundle manage itself
   Plugin 'gmarik/Vundle.vim'
-  
+
   " The best git wrapper, period.
   Plugin 'tpope/vim-fugitive'
-  
+
   " Easily handle comments
   Plugin 'tpope/vim-commentary'
-  
+
   " Makes working with brackets, quotes, tags, etc easier
   Plugin 'tpope/vim-surround'
-  
+
   " The secret sauce to make netrw better
   Plugin 'tpope/vim-vinegar'
-  
+
   " Work with words better
   Plugin 'tpope/vim-abolish'
-  
+
   " Better repeating support
   Plugin 'tpope/vim-repeat'
-  
+
   " Support for auto-completing if/endif do/end type structures
   Plugin 'tpope/vim-endwise'
-  
+
   " Add git diff information to the gutter
   Plugin 'airblade/vim-gitgutter'
 
@@ -87,12 +87,18 @@ call vundle#begin()
 
   " Add a tagbar to browse tags
   Plugin 'majutsushi/tagbar'
-  
+
+  " Fuzzy picker for everything
+  Plugin 'srstevenson/vim-picker'
+
   " Ease writing of XML/HTML by auto-closing tags
   Plugin 'vim-scripts/closetag.vim'
-  
+
   " Auto-close parens, brackets, and braces
   Plugin 'jiangmiao/auto-pairs'
+
+  " Lots of Go goodies
+  Plugin 'fatih/vim-go'
 
   " Set up a cool-looking statusline
   Plugin 'itchyny/lightline.vim'
@@ -101,13 +107,10 @@ call vundle#begin()
   Plugin 'junegunn/fzf.vim'
 
   " Add editorconfig support to vim
-  Plugin 'editorconfig/editorconfig-vim'  
+  Plugin 'editorconfig/editorconfig-vim'
 
-  " Add Gruvbox colorscheme to Vim
-  Plugin 'morhetz/gruvbox'
-
-  " Add Solarized colorscheme to Vim
-  Plugin 'altercation/vim-colors-solarized'
+  " Nord colorscheme, nice and cool
+  Plugin 'arcticicestudio/nord-vim'
   call vundle#end()
 
 "==========="
@@ -124,11 +127,10 @@ filetype plugin indent on
 syntax on
 
 " Colorscheme settings
-colorscheme solarized
 
-" Gruvbox settings
-
-let g:gruvbox_contrast_dark = 'soft'
+set termguicolors
+set background=dark
+colorscheme nord
 
 " Always show the status bar
 set laststatus=2
@@ -214,7 +216,7 @@ set colorcolumn=+1
 
 "=================="
 "  Line Numbering  "
-"==================" 
+"=================="
 
 " Turn on line numbering relative to the current line (default)
 set relativenumber
@@ -235,7 +237,7 @@ autocmd BufRead * normal zR
 set noshowmode
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

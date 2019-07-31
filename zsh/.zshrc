@@ -1,4 +1,4 @@
-#!/bin/zsh
+#! /bin/zsh
 
 ######################################################################
 #                                                                    #
@@ -71,6 +71,8 @@ setopt prompt_subst # Substitute in parameter/command/arithmetic expansions
 # ZLE
 # setopt no_beep # The shell shouldn't beep on ZLE errors (most beeps)
 setopt zle # Use ZLE. This is default, but I like to be explicit
+# Enable Vim-style editing of ZLE
+bindkey -v
 
 
 # Aliases
@@ -84,10 +86,8 @@ alias cat=bat
 
 ## Homebrew Aliases
 
-function brho { brew home $1; }
-function brse { brew search $1; }
-alias bupd="brew update"
-alias bupg="brew upgrade --all && brew cleanup"
+alias b=brew
+alias bup="brew upgrade && brew cleanup"
 alias cask="brew cask"
 
 ## Git Aliases
@@ -101,6 +101,8 @@ alias glog="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c
 alias doco="docker-compose"
 alias doma="docker-machine"
 alias dcr="docker-compose run"
+alias lzd=lazydocker
+alias k=kubectl
 
 ## Rails Aliases
 
@@ -110,16 +112,6 @@ alias routes="bin/rails routes"
 alias rc="bin/rails console"
 alias rs="bin/rails server"
 
-## Java Aliases
-
-function jc { javac -verbose -d $1 -s $1 -h $1 $2 }
-
-## Tmux Aliases
-
-alias at="tmux attach -t"
-alias switch="tmux switch -t"
-alias tnew="tmux new-session -c $PWD"
-
 ## Navigation Aliases
 
 function mcd { mkdir $1; cd $1; }
@@ -128,18 +120,7 @@ function mct { mkdir $1; cd $1; touch $2; }
 
 ## Editing Aliases
 
-alias v="vim"
-alias vim=nvim
-
-## Network Aliases
-
-alias ntest="ping -n -c 1000 www.google.com"
-
-## Scripting Aliases
-
-alias p="python"
-alias p3="python3"
-alias rb="ruby"
+alias v=nvim
 
 # Environment
 #--------------------
@@ -152,6 +133,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${HOME}/.iterm2_shell_integration.zsh
+source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
+source ${HOME}/.zsh/zsh-plugins.sh
 
 # Core tools
 LESS="-RSMsi"
@@ -173,6 +156,7 @@ export HISTSIZE HISTFILE SAVEHIST
 
 autoload -Uz promptinit; promptinit
 prompt pure
+export PROMPT='$(kube_ps1)'$PROMPT
 
 
 # Completion
