@@ -14,3 +14,5 @@ hschne/fzf-git
 paulirish/git-open
 
 zsh-users/zsh-history-substring-search
+
+romkatv/powerlevel10k

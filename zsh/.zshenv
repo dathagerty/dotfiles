@@ -10,8 +10,8 @@ unsetopt global_rcs
 # Universal environment
 #--------------------
 
-ZDOTDIR=${HOME}/.zsh
-export ZDOTDIR
+DOTFILES=${HOME}/.dotfiles
+export DOTFILES
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export GOPATH=$HOME/code/go
@@ -31,7 +31,7 @@ export LIBRARY_PATH=/usr/local/lib
 
 typeset -U path manpath fpath cdpath
 
-local prefix="${ZDOTDIR}/paths"
+local prefix="${DOTFILES}/zsh/paths"
 
 path=(
 	${(ef)"$(cat ${prefix}/paths.d/${HOST} 2> /dev/null)"}

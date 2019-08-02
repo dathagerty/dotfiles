@@ -33,7 +33,7 @@ setopt pushd_minus # Make `cd -1` go to the previous directory, etc
 setopt pushd_to_home # pushd with no arguments goes home, like cd
 
 # Completion
-setopt auto_name_dirs # Parameters set to a path can be used as ~param
+# setopt auto_name_dirs # Parameters set to a path can be used as ~param
 setopt auto_remove_slash # Remove trailing slash if next char is a word delim
 setopt hash_list_all # Before completion, make sure entire path is hashed
 setopt glob_complete # Expand globs upon completion
@@ -127,6 +127,7 @@ alias v=nvim
 export NODE_PATH=/usr/local/lib/node
 
 . `brew --prefix`/etc/profile.d/z.sh
+. $(brew --prefix asdf)/asdf.sh
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -147,7 +148,7 @@ export LESS EDITOR VISUAL PAGER
 #--------------------
 
 HISTSIZE=2000
-HISTFILE=${ZDOTDIR}/.history
+HISTFILE=${HOME}/.zshhistory
 SAVEHIST=$HISTSIZE
 export HISTSIZE HISTFILE SAVEHIST
 
@@ -155,17 +156,14 @@ export HISTSIZE HISTFILE SAVEHIST
 #--------------------
 
 autoload -Uz promptinit; promptinit
-prompt pure
-export PROMPT='$(kube_ps1)'$PROMPT
+# prompt pure
+# export PROMPT='$(kube_ps1)'$PROMPT
 
 
 # Completion
 #--------------------
 
 autoload -Uz compinit && compinit -u
-
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
 
 zstyle ':completion:*' use-cache true # Cache completion to `${ZDOTDIR}/.zcompcache`
 zstyle ':completion:*' squeeze-slashes true # Strip slashes from directories
@@ -217,44 +215,12 @@ function rationalize-dot {
 zle -N rationalize-dot
 bindkey . rationalize-dot
 
-
-# Apple Terminal.app
-#--------------------
-# Alert Terminal.app of the current directory (for the resume feature among others)
-# based on this answer: http://superuser.com/a/328148
-
-update_terminal_cwd() {
-	# Get the directory as a "file:" URL, including the hostname.
-	local URL_PATH=''
-	{
-		# LANG=C to process text byte-by-byte.
-		local i ch hexch LANG=C
-		for ((i = 1; i <= ${#PWD}; ++i)); do
-			ch="$PWD[i]"
-			if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
-				URL_PATH+="$ch"
-			else
-				# Percent-encode special characters
-				hexch=$(printf "%02X" "'$ch")
-				URL_PATH+="%$hexch"
-			fi
-		done
-	}
-
-	# Print the pathname through a special escape sequence to inform Terminal.app
-	local PWD_URL="file://$HOST$URL_PATH"
-	printf '\e]7;%s\a' "$PWD_URL"
-}
-
-if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
-	autoload add-zsh-hook
-	add-zsh-hook precmd update_terminal_cwd
-fi
-
-
 # Startup
 #--------------------
 
 print "\r${USER} @ ${HOST}"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
+[[ -f ~/.dotfiles/zsh/.p10k.zsh ]] && source ~/.dotfiles/zsh/.p10k.zsh
