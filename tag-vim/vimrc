@@ -40,6 +40,8 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
+tnoremap <Esc> <C-\><C-n>
+
 "==================="
 "  Vundle Settings  "
 "==================="
@@ -147,6 +149,9 @@ set wrap
 " Wrap lines at words, not characters
 set linebreak
 
+" Enable mouse input for normal and visual modes
+set mouse=nv
+
 " Turn on spell checking for Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -252,8 +257,18 @@ let g:lightline = {
 "==========================="
 
 set rtp+=/usr/local/opt/fzf
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 nmap <leader>b :TagbarToggle<CR>
 let g:syntastic_aggregate_errors=1
 let g:syntastic_auto_loc_list=1
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+augroup END

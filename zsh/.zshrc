@@ -218,6 +218,13 @@ bindkey . rationalize-dot
 # Startup
 #--------------------
 
+iterm2_print_user_vars() {
+	iterm2_set_user_var goVersion $(asdf current golang)
+	iterm2_set_user_var rubyVersion $(asdf current ruby)
+	iterm2_set_user_var pythonVersion $(asdf current python)
+	iterm2_set_user_var nodeVersion $(asdf current nodejs)
+}
+
 print "\r${USER} @ ${HOST}"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
