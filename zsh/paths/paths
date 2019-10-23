@@ -7,3 +7,4 @@ ${HOME}/.local/bin
 /usr/local/opt/ruby/bin
 /Applications/Postgres.app/Contents/Versions/latest/bin
 ${GOPATH}/bin
+/Applications/Visual Studio Code.app/Contents/Resources/app/bin

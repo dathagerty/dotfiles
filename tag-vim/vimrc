@@ -79,7 +79,7 @@ call vundle#begin()
   Plugin 'airblade/vim-gitgutter'
 
   " Add syntax checking
-  Plugin 'scrooloose/syntastic'
+  Plugin 'dense-analysis/ale'
 
   " Add async build capabilities
   Plugin 'neomake/neomake'
@@ -99,11 +99,17 @@ call vundle#begin()
   " Auto-close parens, brackets, and braces
   Plugin 'jiangmiao/auto-pairs'
 
-  " Lots of Go goodies
-  Plugin 'fatih/vim-go'
+  " JSONnet support
+  Plugin 'google/vim-jsonnet'
+
+  " Good file finding
+  Plugin 'wincent/command-t'
 
   " Set up a cool-looking statusline
   Plugin 'itchyny/lightline.vim'
+
+  " Add ALE to lightline
+  Plugin 'maximbaz/lightline-ale'
 
   " Add fzf-style finding to vim
   Plugin 'junegunn/fzf.vim'
@@ -111,9 +117,9 @@ call vundle#begin()
   " Add editorconfig support to vim
   Plugin 'editorconfig/editorconfig-vim'
 
-  " Nord colorscheme, nice and cool
-  Plugin 'arcticicestudio/nord-vim'
-  call vundle#end()
+  " Dracula theme
+  Plugin 'dracula/vim', {'name': 'dracula'}
+call vundle#end()
 
 "==========="
 "  General  "
@@ -132,7 +138,7 @@ syntax on
 
 set termguicolors
 set background=dark
-colorscheme nord
+colorscheme dracula
 
 " Always show the status bar
 set laststatus=2
@@ -151,9 +157,6 @@ set linebreak
 
 " Enable mouse input for normal and visual modes
 set mouse=nv
-
-" Turn on spell checking for Git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "=========="
 "  Search  "
@@ -207,14 +210,8 @@ set lazyredraw
 " Highlight the current line the cursor is on
 set cursorline
 
-" When the window is no longer active, do not highlight the cursor line
-autocmd WinLeave * setlocal nocursorline
-
 " Highlight the current column the cursor is in
 set cursorcolumn
-
-" When the window is no longer active, do not highlight the cursor column
-autocmd WinLeave * setlocal nocursorcolumn
 
 " Highlight the column after <textwidth> (default is 80 characters)
 set colorcolumn=+1
@@ -226,14 +223,29 @@ set colorcolumn=+1
 " Turn on line numbering relative to the current line (default)
 set relativenumber
 
-" Set absolute line numbers while in Insert mode
-autocmd InsertEnter * :set number
+"============"
+"  Autocmds  "
+"============"
 
-" Return to relative numbers outside of Insert mode
-autocmd InsertLeave * :set relativenumber
+augroup cursor_cmds
+  autocmd!
+  " When the window is no longer active, do not highlight the cursor line
+  autocmd WinLeave * setlocal nocursorline
 
-" Set the fold level to the deepest level on reading a buffer
-autocmd BufRead * normal zR
+  " When the window is no longer active, do not highlight the cursor column
+  autocmd WinLeave * setlocal nocursorcolumn
+
+  " Set absolute line numbers while in Insert mode
+  autocmd InsertEnter * :set number
+
+  " Return to relative numbers outside of Insert mode
+  autocmd InsertLeave * :set relativenumber
+
+  " Turn on spell checking for Git commit messages
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+
+  " Run gofmt on save
+augroup END
 
 "==========================="
 "  Lightline Configuration  "
@@ -242,33 +254,69 @@ autocmd BufRead * normal zR
 set noshowmode
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'dracula',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'linter_checking', 'linter_warnings', 'linter_errors' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
       \ },
+    \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
       \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \ }
+
+let g:lightline#ale#indicator_checking = "\u25cc"
+let g:lightline#ale#indicator_warnings = "\u2691"
+let g:lightline#ale#indicator_errors = "\u2716"
 
 "==========================="
 "  Plugin Related Settings  "
 "==========================="
 
+" Add fzf to the runtime path
 set rtp+=/usr/local/opt/fzf
+
+" ALE Settings
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 1
+" Don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+let g:ale_open_list = 1
+let g:ale_sign_error = '🆘'
+let g:ale_sign_warning = '🔸'
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'go': ['gofmt']
+\}
+let g:ale_fix_on_save = 1
+
+" If for some reason I use netrw instead of command-t
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-nmap <leader>b :TagbarToggle<CR>
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_loc_list=1
-let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
-augroup END
+" Toggle the tagbar...
+nmap <leader>b :TagbarToggle<CR>
+
+" Fugitive doesn't set tag location anymore, so now it needs to be a manual process
+set tags^=./.git/tags
+
+" Don't load editorconfig for fugitive and files loaded over SSH
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
+
+" Use rg instead of ag with fzf.vim
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)

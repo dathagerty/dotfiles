@@ -1,3 +1,4 @@
 export KUBECONFIG=$HOME/.kube/config-dev-core
 export ZDOTDIR=$HOME/.zsh
+export Environment_Name=prod
 . $ZDOTDIR/.zshenv

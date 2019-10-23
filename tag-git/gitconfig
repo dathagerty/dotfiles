@@ -136,6 +136,9 @@
     # Run the ctags git hook - this generates ctags inside the local .git directory
     ctags = !.git/hooks/ctags
 
+    # Mark a cloned repository as safe so that its bin/ directory will be on PATH
+    mark-safe = !mkdir -p .git/safe
+
 [github]
     user = david-hagerty
 

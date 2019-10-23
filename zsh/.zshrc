@@ -103,6 +103,11 @@ alias doma="docker-machine"
 alias dcr="docker-compose run"
 alias lzd=lazydocker
 alias k=kubectl
+alias kgp="k get pods"
+alias kdp="k delete pod"
+alias kctx=kubectx
+alias kns=kubens
+alias ka="k apply -f"
 
 ## Rails Aliases
 
