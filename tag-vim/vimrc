@@ -295,11 +295,12 @@ let g:ale_lint_on_insert_leave = 1
 " Don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
-let g:ale_sign_error = '🆘'
-let g:ale_sign_warning = '🔸'
+let g:ale_sign_error = "\u2716"
+let g:ale_sign_warning = "\u2691"
+let g:ale_linters = {'go': ['gopls']}
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'go': ['gofmt']
+\  'go': ['gofmt', 'goimports']
 \}
 let g:ale_fix_on_save = 1
 

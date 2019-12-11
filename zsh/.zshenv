@@ -61,8 +61,6 @@ cdpath=(
 	${cdpath}
 )
 
-. $(brew --prefix asdf)/asdf.sh
-
-PATH=".git/safe../../bin:$PATH"
+PATH=".git/safe/../../bin:$PATH"
 
 export path manpath fpath cdpath

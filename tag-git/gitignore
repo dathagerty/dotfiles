@@ -35,3 +35,6 @@ build/
 .zcompdump
 
 .vscode/*
+.tool-versions
+
+*/.vscode/*

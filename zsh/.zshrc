@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #! /bin/zsh
 
 ######################################################################
@@ -33,7 +40,6 @@ setopt pushd_minus # Make `cd -1` go to the previous directory, etc
 setopt pushd_to_home # pushd with no arguments goes home, like cd
 
 # Completion
-# setopt auto_name_dirs # Parameters set to a path can be used as ~param
 setopt auto_remove_slash # Remove trailing slash if next char is a word delim
 setopt hash_list_all # Before completion, make sure entire path is hashed
 setopt glob_complete # Expand globs upon completion
@@ -42,7 +48,6 @@ setopt complete_in_word # Completions happen at the cursor's location
 # Expansion and Globbing
 setopt glob # Perform filename generation (i.e. the use of the * operator)
 setopt extended_glob # Use additional glob operators
-# setopt glob_dots # Glob dotfiles
 setopt mark_dirs # Directories resulting from globbing have trailing slashes
 setopt nomatch # If a glob fails, the command isn't executed
 
@@ -52,7 +57,6 @@ setopt hist_ignore_space # Ignore commands that begin with spaces
 setopt inc_append_history # Write commands to history file as soon as possible
 
 # Input/Output
-# setopt noclobber # Prevents `>` from clobbering files. Use `>|` to clobber.
 setopt correct # Try to correct the spelling of commands
 setopt interactive_comments # Allow comments in interactive shells
 
@@ -78,6 +82,11 @@ bindkey -v
 # Aliases
 #--------------------
 
+## fasd aliases
+
+alias fv='f -e nvim'
+
+## Conveniences for common commands
 alias sed="sed -r"
 alias ls="ls -a -l --human-readable --classify --group-directories-first --color=auto"
 alias mkdir="mkdir -p"
@@ -117,12 +126,6 @@ alias routes="bin/rails routes"
 alias rc="bin/rails console"
 alias rs="bin/rails server"
 
-## Navigation Aliases
-
-function mcd { mkdir $1; cd $1; }
-function cdl { cd $1; ls -a; }
-function mct { mkdir $1; cd $1; touch $2; }
-
 ## Editing Aliases
 
 alias v=nvim
@@ -131,7 +134,7 @@ alias v=nvim
 #--------------------
 export NODE_PATH=/usr/local/lib/node
 
-. `brew --prefix`/etc/profile.d/z.sh
+eval "$(fasd --init auto)"
 . $(brew --prefix asdf)/asdf.sh
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -141,6 +144,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${HOME}/.iterm2_shell_integration.zsh
 source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
 source ${HOME}/.zsh/zsh-plugins.sh
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Core tools
 LESS="-RSMsi"
@@ -192,17 +196,10 @@ alias mv="noglob zmv"
 
 # Quick Status
 #--------------------
-# Use the `l` command to print both the directory listing and git status
-# Use `ll` to include dotfiles
 
 function l {
 	git -C $PWD/$1:h/$1:t status -sb $PWD/$1 2>/dev/null
 	ls $@ --format=long
-}
-
-function ll {
-	git -C $PWD/$1:h/$1:t status -sb $PWD/$1 2>/dev/null
-	ls $@ --format=long --almost-all
 }
 
 
@@ -230,9 +227,9 @@ iterm2_print_user_vars() {
 	iterm2_set_user_var nodeVersion $(asdf current nodejs)
 }
 
-print "\r${USER} @ ${HOST}"
+print "\rReady for input"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ -f ~/.dotfiles/zsh/.p10k.zsh ]] && source ~/.dotfiles/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
+[[ ! -f ~/.zsh/.p10k.zsh ]] || source ~/.zsh/.p10k.zsh
