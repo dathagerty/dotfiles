@@ -8,3 +8,6 @@ ${HOME}/.local/bin
 /Applications/Postgres.app/Contents/Versions/latest/bin
 ${GOPATH}/bin
 /Applications/Visual Studio Code.app/Contents/Resources/app/bin
+${HOME}/.cargo/bin
+${HOME}/.krew/bin
+/usr/local/opt/openssl@1.1/bin

@@ -6,6 +6,72 @@
 
 unsetopt global_rcs
 
+# Shell Options
+#--------------------
+# zshoptions(1)  /  http://zsh.sourceforge.net/Doc/Release/Options.html
+
+# Changing Directories
+setopt auto_cd # If command is a directory path, cd to it
+setopt auto_pushd # cd is really pushd
+setopt chase_dots # Resolve `..` directories to their true location
+setopt chase_links # Resolve links to their true location
+setopt pushd_ignore_dups # Don't put duplicates on the directory stack
+setopt pushd_minus # Make `cd -1` go to the previous directory, etc
+setopt pushd_to_home # pushd with no arguments goes home, like cd
+
+# Completion
+setopt auto_remove_slash # Remove trailing slash if next char is a word delim
+setopt hash_list_all # Before completion, make sure entire path is hashed
+setopt glob_complete # Expand globs upon completion
+setopt complete_in_word # Completions happen at the cursor's location
+
+# Expansion and Globbing
+setopt glob # Perform filename generation (i.e. the use of the * operator)
+setopt extended_glob # Use additional glob operators
+setopt mark_dirs # Directories resulting from globbing have trailing slashes
+setopt nomatch # If a glob fails, the command isn't executed
+
+# History
+setopt hist_ignore_all_dups # Ignore all duplicates when writing history
+setopt hist_ignore_space # Ignore commands that begin with spaces
+setopt inc_append_history # Write commands to history file as soon as possible
+
+# Input/Output
+setopt correct # Try to correct the spelling of commands
+setopt interactive_comments # Allow comments in interactive shells
+
+# Job Control
+setopt auto_continue # When suspended jobs are disowned, resume them in the bg
+setopt auto_resume # single-word simple commands are candidates for resumption
+setopt bg_nice # Run background jobs at lower priority
+setopt check_jobs # Warn about background & suspended jobs on exit
+setopt monitor # Enable job control. This is default.
+
+# Prompting
+setopt prompt_cr # Print a \r before the prompt
+setopt prompt_sp # Preserve lines that would be covered by the \r
+setopt prompt_subst # Substitute in parameter/command/arithmetic expansions
+
+# ZLE
+# setopt no_beep # The shell shouldn't beep on ZLE errors (most beeps)
+setopt zle # Use ZLE. This is default, but I like to be explicit
+# Enable Vim-style editing of ZLE
+bindkey -v
+
+# Core tools
+LESS="-RSMsi"
+EDITOR="nvim"
+VISUAL="nvim"
+PAGER="less"
+export LESS EDITOR VISUAL PAGER
+
+# History
+#--------------------
+
+HISTSIZE=2000
+HISTFILE=${HOME}/.zshhistory
+SAVEHIST=$HISTSIZE
+export HISTSIZE HISTFILE SAVEHIST
 
 # Universal environment
 #--------------------
@@ -14,10 +80,17 @@ DOTFILES=${HOME}/.dotfiles
 export DOTFILES
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 export GOPATH=$HOME/code/go
+export GOROOT=$HOME/.asdf/installs/golang/1.13.4/go
+export NODE_PATH=/usr/local/lib/node
 
 export CPLUS_INCLUDE_PATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib
+
+# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Path
 #--------------------

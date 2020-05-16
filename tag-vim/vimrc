@@ -119,6 +119,19 @@ call vundle#begin()
 
   " Dracula theme
   Plugin 'dracula/vim', {'name': 'dracula'}
+
+  " Substrata theme
+  Plugin 'arzg/vim-substrata'
+
+  " Falcon theme
+  Plugin 'fenetikm/falcon'
+
+  " Solarized theme
+  Plugin 'lifepillar/vim-solarized8'
+
+  " Nord theme
+  Plugin 'arcticicestudio/nord-vim'
+
 call vundle#end()
 
 "==========="
@@ -136,9 +149,13 @@ syntax on
 
 " Colorscheme settings
 
+" let g:falcon_lightline = 1
+" let g:falcon_inactive = 1
 set termguicolors
 set background=dark
-colorscheme dracula
+colorscheme nord
+let g:nord_uniform_diff_background = 1
+let g:nord_bold_vertical_split_line = 1
 
 " Always show the status bar
 set laststatus=2
@@ -254,7 +271,7 @@ augroup END
 set noshowmode
 
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],

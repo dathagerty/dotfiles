@@ -1,13 +1,37 @@
+[user]
+    name = David Hagerty
+    email = david.hagerty@cfacorp.com
+    signingkey = A2887F947879CF1793300F8A7EA6699CFD921B4B
 [color]
-    ui = 1
+    ui = auto
+
+[color "branch"]
+  current = yellow
+  local = 241
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = magenta
 
 [diff]
     renames = copies
     mnemonicprefix = true
 
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = /Users/david.hagerty/.gitignore
     editor = "vim"
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme="Nord"
+
+[interactive]
+    diffFilter = delta --color-only
 
 [commit]
     template = ~/.gitmessage
@@ -123,28 +147,32 @@
 
     # A prettier log output with short commit hashes
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    r = !GIT_NO_PAGER=1 git l -30
+    l = "!. ~/.vim/bundle/falcon/.githelpers && pretty_git_log"
 
     # List all branches
-    branches = branch -a
+    bs = branch -a
 
     # List all remotes
-    remotes = remote -v
+    rs = remote -v
 
     # List all git tags
-    tags = tag -l
+    ts = tag -l
 
     # Run the ctags git hook - this generates ctags inside the local .git directory
     ctags = !.git/hooks/ctags
 
     # Mark a cloned repository as safe so that its bin/ directory will be on PATH
-    mark-safe = !mkdir -p .git/safe
-	fco = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
+    mark-safe = !mkdir -p ./.git/safe
+
+    # Fuzzy checkout
+    fco = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
 
 [github]
     user = david-hagerty
 
 [credential]
-    helper = osxkeychain
+	helper = store
 
 [filter "media"]
     required = true
@@ -178,14 +206,14 @@
     required = true
     clean = git-lfs clean -- %f
 
-[push]
-    default = matching
-
 [init]
     templatedir = ~/.git_template
 
 [merge]
     tool = vimdiff
+
+[push]
+    default = current
 
 [mergetool]
     conflictstyle = diff3
@@ -198,6 +226,8 @@
 [advice]
     ignoredHook = false
 
-[pager]
-    diff = diff-so-fancy | less --tabs=4 -RFX
-    show = diff-so-fancy | less --tabs=4 -RFX
+# [pager]
+#     diff = diff-so-fancy | less --tabs=4 -RFX
+#     show = diff-so-fancy | less --tabs=4 -RFX
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg
