@@ -11,3 +11,4 @@ ${GOPATH}/bin
 ${HOME}/.cargo/bin
 ${HOME}/.krew/bin
 /usr/local/opt/openssl@1.1/bin
+/usr/local/cuda

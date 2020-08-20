@@ -82,7 +82,7 @@ export DOTFILES
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 export GOPATH=$HOME/code/go
-export GOROOT=$HOME/.asdf/installs/golang/1.13.4/go
+export GOROOT=$HOME/.asdf/installs/golang/1.14.4/go
 export NODE_PATH=/usr/local/lib/node
 
 export CPLUS_INCLUDE_PATH=/usr/local/include
