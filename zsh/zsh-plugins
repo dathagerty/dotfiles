@@ -1,0 +1,17 @@
+
+# Browse z entries with fzf
+andrewferrier/fzf-z
+
+# Work better with Maven
+KyleChamberlin/zsh_maven_plugin
+
+# Fish-like auto-suggestions
+zsh-users/zsh-autosuggestions
+
+wfxr/forgit
+wfxr/emoji-cli
+hschne/fzf-git
+
+paulirish/git-open
+
+zsh-users/zsh-history-substring-search
