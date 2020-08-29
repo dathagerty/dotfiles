@@ -275,3 +275,5 @@ fi
 print "\r${USER} @ ${HOST}"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $(brew --prefix asdf)/asdf.sh

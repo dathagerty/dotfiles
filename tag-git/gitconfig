@@ -8,6 +8,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = "vim"
+	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
 
 [commit]
 	template = ~/.gitmessage
@@ -186,6 +187,9 @@
 	conflictstyle = diff3
 	prompt = false
 	keepBackup = true
+
+[interactive]
+    diffFilter = delta --color-only --theme='Nord'
 
 [hub]
 	protocol = git

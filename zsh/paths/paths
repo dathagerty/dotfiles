@@ -8,6 +8,4 @@ ${HOME}/.local/bin
 /Applications/Postgres.app/Contents/Versions/latest/bin
 ${HOME}/.rbenv/bin
 ${HOME}/.pyenv/bin
-${HOME}/Library/Android/sdk/platform-tools
-${HOME}/Library/Android/sdk/tools
-${HOME}/Library/Android/sdk/tools/bin
+${HOME}/.cargo/bin
