@@ -1,52 +1,52 @@
 [color]
-	ui = 1
+  ui = 1
 
 [diff]
-	renames = copies
-	mnemonicprefix = true
+  renames = copies
+  mnemonicprefix = true
 
 [core]
-	excludesfile = ~/.gitignore
-	editor = "vim"
-	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
+  excludesfile = ~/.gitignore
+  editor = "vim"
+  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
 
 [commit]
-	template = ~/.gitmessage
+  template = ~/.gitmessage
 
 [alias]
   # -------
   # Staging
-	# -------
+  # -------
 
-	# Interactively add files (or chunks) to staging
+  # Interactively add files (or chunks) to staging
     ai = add --interactive
 
-	# Add specific files to staging by file name
-	# Usage: g(it) a <filename(s)>
-	a = add
+  # Add specific files to staging by file name
+  # Usage: g(it) a <filename(s)>
+  a = add
 
-	# Add all files to the staging area
-	aa = add .
+  # Add all files to the staging area
+  aa = add .
 
   # ----------
   # Commitment
   # ----------
 
-	# Basic commit, opens $EDITOR to write a commit message
+  # Basic commit, opens $EDITOR to write a commit message
   c = commit -v
 
-	# Basic commit with a message from the command-line
-	# Usage: g(it) cm "This is a bad commit message"
+  # Basic commit with a message from the command-line
+  # Usage: g(it) cm "This is a bad commit message"
   cm = commit -v -m
 
-	# Auto-stage modified tracked files and commit with a message from the command line
-	# Usage: g(it) cma "This is a bad commit message"
+  # Auto-stage modified tracked files and commit with a message from the command line
+  # Usage: g(it) cma "This is a bad commit message"
   cma = commit -v -a -m
 
   # Auto-stage modified tracked files and commit with $EDITOR
   ca = commit -v -a
   
-	# Auto-stage modified tracked files and commit with an initial commit message
+  # Auto-stage modified tracked files and commit with an initial commit message
   ci = commit -v -a -m "Initial commit"
 
   # --------------
@@ -71,86 +71,86 @@
   # Usage: g(it) r [--soft] <target>
   r = reset
 
-	# Reset to the first parent commit on HEAD
+  # Reset to the first parent commit on HEAD
   r1 = reset HEAD^
 
-	# Reset to the second parent (grandparent) commit on HEAD
+  # Reset to the second parent (grandparent) commit on HEAD
   r2 = reset HEAD^^
 
-	# -----------
-	# Hard Resets
-	# -----------
+  # -----------
+  # Hard Resets
+  # -----------
 
-	# These resets are the same as above, but are hard (destructive) resets.
-	# This is where the nuclear weapons are stored.
+  # These resets are the same as above, but are hard (destructive) resets.
+  # This is where the nuclear weapons are stored.
 
   rh = reset --hard
   rh1 = reset --hard HEAD^
   rh2 = reset --hard HEAD^^
 
   # -----------------
-	# General Shortcuts
-	# -----------------
+  # General Shortcuts
+  # -----------------
   
-	# Show status of modified files, and show the remote branch the local branch is tracking.
-	st = status -sb
+  # Show status of modified files, and show the remote branch the local branch is tracking.
+  st = status -sb
   
-	d = diff
+  d = diff
   
-	# Save characters, save the world
-	# Usage: g(it) co <name>
-	co = checkout
-	
-	# Create a branch and checkout that branch
-	# Usage: g(it) cb <name>
-	cb = checkout -b
+  # Save characters, save the world
+  # Usage: g(it) co <name>
+  co = checkout
   
-	# Create a branch in just one character
-	# Usage: g(it) b <name>
-	b = branch
-	
-	# Delete a branch in just two characters
-	# Usage: g(it) bd <name>
-	bd = branch -d
+  # Create a branch and checkout that branch
+  # Usage: g(it) cb <name>
+  cb = checkout -b
   
-	f = fetch
+  # Create a branch in just one character
+  # Usage: g(it) b <name>
+  b = branch
   
-	p = push
-	
-	po = push origin
-	
-	pm = push origin master
-	
-	# A prettier log output with short commit hashes
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	
-	# List all branches
-	branches = branch -a
-	
-	# List all remotes
-	remotes = remote -v
-	
-	# List all git tags
-	tags = tag -l
-	
-	# Run the ctags git hook - this generates ctags inside the local .git directory
-	ctags = !.git/hooks/ctags
+  # Delete a branch in just two characters
+  # Usage: g(it) bd <name>
+  bd = branch -d
+  
+  f = fetch
+  
+  p = push
+  
+  po = push origin
+  
+  pm = push origin master
+  
+  # A prettier log output with short commit hashes
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  
+  # List all branches
+  branches = branch -a
+  
+  # List all remotes
+  remotes = remote -v
+  
+  # List all git tags
+  tags = tag -l
+  
+  # Run the ctags git hook - this generates ctags inside the local .git directory
+  ctags = !.git/hooks/ctags
 
 [github]
-	user = dhagerty9009
+  user = dhagerty9009
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 
 [url "https://github.com/"]
     insteadOf = gh:
@@ -162,37 +162,37 @@
     insteadOf = bb:
 
 [branch]
-	autosetupmerge = true
-	autosetuprebase = always
+  autosetupmerge = true
+  autosetuprebase = always
 
 [rerere]
-	enabled = true
-	autoupdate = true
+  enabled = true
+  autoupdate = true
 
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  clean = git-lfs clean -- %f
 
 [push]
-	default = matching
+  default = matching
 
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 
 [mergetool]
-	conflictstyle = diff3
-	prompt = false
-	keepBackup = true
+  conflictstyle = diff3
+  prompt = false
+  keepBackup = true
 
 [interactive]
     diffFilter = delta --color-only --theme='Nord'
 
 [hub]
-	protocol = git
+  protocol = git
 
 [advice]
   ignoredHook = false
