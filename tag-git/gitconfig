@@ -182,7 +182,7 @@
 [url "https://bitbucket.org/"]
   insteadOf = bb:
 
-[url "https://git.sr.ht/"]
+[url "git@git.sr.ht:"]
   insteadOf = srht:
 
 [branch]

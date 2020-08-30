@@ -1,29 +1,57 @@
 #! /bin/sh
 
 fancy_echo() {
-  local fmt="$1"; shift
+  fmt="$1"; shift
 
   # shellcheck disable=SC2059
   printf "\\n$fmt\\n" "$@"
 }
 
+print_red() {
+    echo "$(tput setaf 1)$1$(tput sgr0)"
+}
+
+print_green() {
+    echo "$(tput setaf 2)$1$(tput sgr0)"
+}
+
+print_yellow() {
+    echo "$(tput setaf 3)$1$(tput sgr0)"
+}
+
+print_blue() {
+    echo "$(tput setaf 4)$1$(tput sgr0)"
+}
+
+print_magenta() {
+    echo "$(tput setaf 5)$1$(tput sgr0)"
+}
+
+print_cyan() {
+    echo "$(tput setaf 6)$1$(tput sgr0)"
+}
+
+print_bold() {
+    echo "$(tput bold)$1$(tput sgr0)"
+}
+
 # Install Homebrew
 fancy_echo "Let's set up your laptop 💻."
 fancy_echo "Enter your git credentials for this laptop"
-fancy_echo "Enter your name:"
-read -r NAME
-fancy_echo "Enter your email: "
-read -r EMAIL
+# fancy_echo "Enter your name:"
+# read -r NAME
+# fancy_echo "Enter your email: "
+# read -r EMAIL
 
 # fancy_echo "▶️ Setting up XCode CLT"
 # xcode-select --install
 
 fancy_echo "▶ Installing Homebrew"
-if  ! command -v brew > /dev/null; then
-    fancy_echo "Homebrew is already installed"
+if which brew > /dev/null ; then
+    print_green "Homebrew is already installed")
 else
     #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fancy_echo "Homebrew not installed"
+    print bold "$(print_red "Homebrew not installed")"
 fi
 
 fancy_echo "▶️ Cloning dotfiles"
