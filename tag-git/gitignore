@@ -33,3 +33,8 @@ build/
 .idea
 .history
 .zcompdump
+
+.vscode/*
+.tool-versions
+
+*/.vscode/*

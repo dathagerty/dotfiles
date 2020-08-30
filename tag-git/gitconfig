@@ -1,6 +1,22 @@
 [color]
   ui = 1
 
+[color "branch"]
+  current = yellow
+  local = 241
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = magenta
+
 [diff]
   renames = copies
   mnemonicprefix = true
@@ -9,6 +25,9 @@
   excludesfile = ~/.gitignore
   editor = "vim"
   pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
+
+[interactive]
+  diffFilter = delta --color-only --theme="Nord"
 
 [commit]
   template = ~/.gitmessage
@@ -123,12 +142,14 @@
   
   # A prettier log output with short commit hashes
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  
+  r = !GIT_NO_PAGER=1 git l -30
+  l = "!. ~/.vim/bundle/falcon/.githelpers && pretty_git_log"
+
   # List all branches
-  branches = branch -a
+  bs = branch -a
   
   # List all remotes
-  remotes = remote -v
+  rs = remote -v
   
   # List all git tags
   tags = tag -l
@@ -153,13 +174,16 @@
   required = true
 
 [url "https://github.com/"]
-    insteadOf = gh:
+  insteadOf = gh:
 
 [url "https://gist.github.com/"]
-    insteadOf = gist:
+  insteadOf = gist:
 
 [url "https://bitbucket.org/"]
-    insteadOf = bb:
+  insteadOf = bb:
+
+[url "https://git.sr.ht/"]
+  insteadOf = srht:
 
 [branch]
   autosetupmerge = true
@@ -188,15 +212,8 @@
   prompt = false
   keepBackup = true
 
-[interactive]
-    diffFilter = delta --color-only --theme='Nord'
-
 [hub]
   protocol = git
 
 [advice]
   ignoredHook = false
-
-[pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  show = diff-so-fancy | less --tabs=4 -RFX
