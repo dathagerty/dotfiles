@@ -1,7 +1,6 @@
 [user]
     name = David Hagerty
-    email = david.hagerty@cfacorp.com
-    signingkey = A2887F947879CF1793300F8A7EA6699CFD921B4B
+    # email = david.hagerty@cfacorp.com
 [color]
     ui = auto
 
@@ -35,7 +34,6 @@
 
 [commit]
     template = ~/.gitmessage
-    gpgsign = true
 
 [alias]
     # -------
@@ -65,13 +63,13 @@
 
     # Auto-stage modified tracked files and commit with a message from the command line
     # Usage: g(it) cma "This is a bad commit message"
-    cma = commit -v -a -m
+    cma = commit -vam
 
     # Auto-stage modified tracked files and commit with $EDITOR
-    ca = commit -v -a
+    ca = commit -va
 
     # Auto-stage modified tracked files and commit with an initial commit message
-    ci = commit -v -a -m "Initial commit"
+    ci = commit -vam "Initial commit"
 
     # --------------
     # Signed Commits
@@ -81,10 +79,10 @@
     # The commands include the `-S` flag on top of the normal shortcuts.
 
     cs = commit -S -v
-    cms = commit -S -v -m
-    cmsa = commit -S -v -a -m
-    csa = commit -S -v -a
-    csi = commit -S -v -a -m "Initial commit"
+    cms = commit -S -vm
+    cmsa = commit -S -vam
+    csa = commit -S -va
+    csi = commit -S -vam "Initial commit"
 
     # -----------
     # Soft Resets
@@ -140,6 +138,7 @@
     f = fetch
 
     p = push
+    p1 = push -u
 
     po = push origin
 
@@ -147,8 +146,7 @@
 
     # A prettier log output with short commit hashes
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    r = !GIT_NO_PAGER=1 git l -30
-    l = "!. ~/.vim/bundle/falcon/.githelpers && pretty_git_log"
+    r = !git lg -30
 
     # List all branches
     bs = branch -a
@@ -160,16 +158,13 @@
     ts = tag -l
 
     # Run the ctags git hook - this generates ctags inside the local .git directory
-    ctags = !.git/hooks/ctags
+    ctags = !./.git/hooks/ctags
 
     # Mark a cloned repository as safe so that its bin/ directory will be on PATH
     mark-safe = !mkdir -p ./.git/safe
 
     # Fuzzy checkout
     fco = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
-
-[github]
-    user = david-hagerty
 
 [credential]
 	helper = store

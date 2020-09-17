@@ -84,6 +84,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export GOPATH=$HOME/code/go
 export GOROOT=$HOME/.asdf/installs/golang/1.14.4/go
 export NODE_PATH=/usr/local/lib/node
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 export CPLUS_INCLUDE_PATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib

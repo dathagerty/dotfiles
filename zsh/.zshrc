@@ -1,5 +1,3 @@
-#! /bin/zsh
-
 ######################################################################
 #                                                                    #
 #                                                                    #
@@ -33,7 +31,7 @@ alias ls="exa -laF --git --group-directories-first"
 alias mkdir="mkdir -p"
 alias grep="grep --extended-regexp --no-messages --binary-files=without-match --line-number --color"
 alias cat='bat --theme="Nord"'
-alias dots="cd $DOTFILES"
+alias dots='cd $DOTFILES'
 
 ## Homebrew Aliases
 
@@ -54,12 +52,6 @@ alias doco="docker-compose"
 alias doma="docker-machine"
 alias dcr="docker-compose run"
 alias lzd=lazydocker
-alias k=kubectl
-alias kgp="k get pods"
-alias kdp="k delete pod"
-alias kctx=kubectx
-alias kns=kubens
-alias ka="k apply -f"
 
 ## Rails Aliases
 
@@ -72,14 +64,6 @@ alias rs="bin/rails server"
 ## Editing Aliases
 
 alias v=nvim
-
-## Work Aliases/Functions
-
-alias login-riotp="aws-login -a cfaiotprod -n devops && kctx riot-prod"
-alias login-riotnp="aws-login -a cfaiotdev -n Admin && kctx riot-dev"
-alias login-csnp="aws-login -a cfacoreservicesnp -n devops"
-alias login-csp="aws-login -a cfacoreserviceprod -n devops"
-
 
 # zmv - Batch Rename
 #--------------------
@@ -97,8 +81,8 @@ alias mv="noglob zmv"
 #--------------------
 
 function l {
-	git -C $PWD/$1:h/$1:t status -sb $PWD/$1 2>/dev/null
-	ls $@ --format=long
+	git -C "$PWD"/"$1":h/"$1":t status -sb "$PWD"/"$1" 2>/dev/null
+	ls "$@" --format=long
 }
 
 
@@ -107,7 +91,7 @@ function l {
 
 function rationalize-dot {
 	if [[ $LBUFFER = *... ]]; then
-		LBUFFER=$LBUFFER[1,-2]
+		LBUFFER=${LBUFFER[1,-2]}
 		LBUFFER+=/..
 	else
 		LBUFFER+=.
@@ -140,17 +124,14 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ${HOME}/.iterm2_shell_integration.zsh
+
 source ${HOME}/.zsh/zsh-plugins.sh
 
-iterm2_print_user_vars() {
-	iterm2_set_user_var goVersion $(asdf current golang)
-	iterm2_set_user_var rubyVersion $(asdf current ruby)
-	iterm2_set_user_var pythonVersion $(asdf current python)
-	iterm2_set_user_var nodeVersion $(asdf current nodejs)
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Load local environment and functions
+
+source ${HOME}/.local/zsh/config.zsh
 
 eval "$(starship init zsh)"
 
