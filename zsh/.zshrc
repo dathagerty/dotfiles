@@ -117,21 +117,30 @@ bindkey '^[[Z' reverse-menu-complete
 # Startup
 #--------------------
 
-eval "$(fasd --init auto)"
-. $(brew --prefix asdf)/asdf.sh
+# Job Control
+setopt monitor # Enable job control. This is default.
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# Prompting
+setopt prompt_cr # Print a \r before the prompt
+setopt prompt_sp # Preserve lines that would be covered by the \r
+setopt prompt_subst # Substitute in parameter/command/arithmetic expansions
+
+# ZLE
+# setopt no_beep # The shell shouldn't beep on ZLE errors (most beeps)
+setopt zle # Use ZLE. This is default, but I like to be explicit
+# Enable Vim-style editing of ZLE
+bindkey -v
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ${HOME}/.zsh/zsh-plugins.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ## Load local environment and functions
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fasd --init auto)"
 source ${HOME}/.local/zsh/config.zsh
+. $(brew --prefix asdf)/asdf.sh
 
 eval "$(starship init zsh)"
 

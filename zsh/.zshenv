@@ -45,18 +45,6 @@ setopt auto_continue # When suspended jobs are disowned, resume them in the bg
 setopt auto_resume # single-word simple commands are candidates for resumption
 setopt bg_nice # Run background jobs at lower priority
 setopt check_jobs # Warn about background & suspended jobs on exit
-setopt monitor # Enable job control. This is default.
-
-# Prompting
-setopt prompt_cr # Print a \r before the prompt
-setopt prompt_sp # Preserve lines that would be covered by the \r
-setopt prompt_subst # Substitute in parameter/command/arithmetic expansions
-
-# ZLE
-# setopt no_beep # The shell shouldn't beep on ZLE errors (most beeps)
-setopt zle # Use ZLE. This is default, but I like to be explicit
-# Enable Vim-style editing of ZLE
-bindkey -v
 
 # Core tools
 LESS="-RSMsi"
