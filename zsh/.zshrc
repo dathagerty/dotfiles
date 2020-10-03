@@ -16,7 +16,6 @@
 #                                                                    #
 ######################################################################
 
-
 # Aliases
 #--------------------
 
@@ -25,6 +24,7 @@
 alias fv='f -e nvim'
 
 ## Conveniences for common commands
+
 
 alias sed="sed -r"
 alias ls="exa -laF --git --group-directories-first"
@@ -112,7 +112,6 @@ zstyle ':completion:*' menu select # Make the menu interactive with arrow keys
 
 bindkey '^I' menu-expand-or-complete
 bindkey '^[[Z' reverse-menu-complete
-
 
 # Startup
 #--------------------

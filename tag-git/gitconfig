@@ -180,13 +180,16 @@
     required = true
 
 [url "https://github.com/"]
-    insteadOf = gh:
+  insteadOf = gh:
 
 [url "https://gist.github.com/"]
-    insteadOf = gist:
+  insteadOf = gist:
 
 [url "https://bitbucket.org/"]
-    insteadOf = bb:
+  insteadOf = bb:
+
+[url "git@git.sr.ht:"]
+  insteadOf = srht:
 
 [branch]
     autosetupmerge = true
@@ -221,8 +224,5 @@
 [advice]
     ignoredHook = false
 
-# [pager]
-#     diff = diff-so-fancy | less --tabs=4 -RFX
-#     show = diff-so-fancy | less --tabs=4 -RFX
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg

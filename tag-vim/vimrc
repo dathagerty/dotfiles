@@ -3,7 +3,7 @@
 "                    Vim Configuration                    "
 "                                                         "
 "                  Author: David Hagerty                  "
-"                     Copyright 2018                      "
+"                     Copyright 2020                      "
 "                                                         "
 "       My configuration for Vim, lovingly crafted.       "
 "              Made for ease of use in macOS.             "
@@ -117,21 +117,8 @@ call vundle#begin()
   " Add editorconfig support to vim
   Plugin 'editorconfig/editorconfig-vim'
 
-  " Dracula theme
-  Plugin 'dracula/vim', {'name': 'dracula'}
-
-  " Substrata theme
-  Plugin 'arzg/vim-substrata'
-
-  " Falcon theme
-  Plugin 'fenetikm/falcon'
-
-  " Solarized theme
-  Plugin 'lifepillar/vim-solarized8'
-
   " Nord theme
   Plugin 'arcticicestudio/nord-vim'
-
 call vundle#end()
 
 "==========="
@@ -149,8 +136,6 @@ syntax on
 
 " Colorscheme settings
 
-" let g:falcon_lightline = 1
-" let g:falcon_inactive = 1
 set termguicolors
 set background=dark
 colorscheme nord
@@ -171,6 +156,9 @@ set wrap
 
 " Wrap lines at words, not characters
 set linebreak
+
+" Enable mouse input for normal and visual modes
+set mouse=nv
 
 " Enable mouse input for normal and visual modes
 set mouse=nv

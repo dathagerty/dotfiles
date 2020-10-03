@@ -1,22 +1,44 @@
 # My Dotfiles
 
 My dotfiles and general development environment settings.
+Mostly cobbled together by copying stuff I liked from other people.
+I'd give credit, but I forget everywhere I found stuff.
 
-My tools:
+Yes, I use both Vim and Emacs.
+Org-mode is really nice.
 
-* Zsh
-* Vim
+## The Tools
+
+### Languages
+
 * Ruby
 * Python
-* Node
-* Homebrew
+* Go
+* Rust
+* Java
+* C/C++
+* Bash
+
+### CLI Stuff
+
+* git
+* Emacs
+* Vim
+* Homebrew (on my MacBook)
+* Zsh
+* Antibody
+* fasd
+* exa
+* delta
+* bat
+* asdf
+
+### Other things
+
+* IntelliJ IDEs (GoLand and CLion)
+* VS Code
 
 ## Installation
 
-### Easiest
-
-* Run `curl -fsSL https://raw.githubusercontent.com/dhagerty9009/dotfiles/master/install.sh | bash`
-
-### Less Easy
-
-* Clone this repository and run `./install.sh` (you may need to `chmod +x` it).
+Not magic at this point.
+You can brute-force it if you want, but I'd just recommend copy-and-pasting the bits you like.
