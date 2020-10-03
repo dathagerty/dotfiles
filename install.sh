@@ -36,23 +36,18 @@ print_bold() {
 }
 
 # Install Homebrew
-fancy_echo "Let's set up your laptop 💻."
-fancy_echo "Enter your git credentials for this laptop"
-# fancy_echo "Enter your name:"
-# read -r NAME
-# fancy_echo "Enter your email: "
-# read -r EMAIL
+echo "Let's set up your laptop.\nWe will start with git.\n"
+echo "Enter your git credentials for this system\n"
+echo "Enter your name:"
+read NAME
+echo "Enter your email: "
+read EMAIL
 
-# fancy_echo "▶️ Setting up XCode CLT"
-# xcode-select --install
+echo "\n ▶️ Setting up XCode CLT\n"
+xcode-select --install
 
-fancy_echo "▶ Installing Homebrew"
-if which brew > /dev/null ; then
-    print_green "Homebrew is already installed")
-else
-    #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    print bold "$(print_red "Homebrew not installed")"
-fi
+echo "\n ▶ Installing Homebrew\n"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 fancy_echo "▶️ Cloning dotfiles"
 if [ ! -e ~/.dotfiles ]; then

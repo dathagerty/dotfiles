@@ -6,6 +6,10 @@ ${HOME}/.local/bin
 /usr/local/opt/gnu-sed/libexec/gnubin
 /usr/local/opt/ruby/bin
 /Applications/Postgres.app/Contents/Versions/latest/bin
-${HOME}/.rbenv/bin
-${HOME}/.pyenv/bin
+${GOPATH}/bin
+/Applications/Visual Studio Code.app/Contents/Resources/app/bin
 ${HOME}/.cargo/bin
+${HOME}/.krew/bin
+/usr/local/opt/openssl@1.1/bin
+/usr/local/cuda
+${HOME}/.emacs.d/bin

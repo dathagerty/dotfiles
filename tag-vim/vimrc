@@ -40,6 +40,8 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
+tnoremap <Esc> <C-\><C-n>
+
 "==================="
 "  Vundle Settings  "
 "==================="
@@ -51,43 +53,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Let Vundle manage itself
   Plugin 'gmarik/Vundle.vim'
-  
-  " Better Ruby support in Vim
-  Plugin 'vim-ruby/vim-ruby'
-  
+
   " The best git wrapper, period.
   Plugin 'tpope/vim-fugitive'
-  
+
   " Easily handle comments
   Plugin 'tpope/vim-commentary'
-  
-  " Makes Rails and Vim best friends
-  Plugin 'tpope/vim-rails'
-  
+
   " Makes working with brackets, quotes, tags, etc easier
   Plugin 'tpope/vim-surround'
-  
+
   " The secret sauce to make netrw better
   Plugin 'tpope/vim-vinegar'
-  
+
   " Work with words better
   Plugin 'tpope/vim-abolish'
-  
+
   " Better repeating support
   Plugin 'tpope/vim-repeat'
-  
-  " Haml support
-  Plugin 'tpope/vim-haml'
-  
-  " Basic rbenv support
-  Plugin 'tpope/vim-rbenv'
-  
-  " Bundler integration
-  Plugin 'tpope/vim-bundler'
-  
+
   " Support for auto-completing if/endif do/end type structures
   Plugin 'tpope/vim-endwise'
-  
+
   " Add git diff information to the gutter
   Plugin 'airblade/vim-gitgutter'
 
@@ -147,6 +134,8 @@ filetype plugin indent on
 " Enable syntax highlighting
 syntax on
 
+" Colorscheme settings
+
 set termguicolors
 set background=dark
 colorscheme nord
@@ -168,8 +157,8 @@ set wrap
 " Wrap lines at words, not characters
 set linebreak
 
-" Turn on spell checking for Git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
+" Enable mouse input for normal and visual modes
+set mouse=nv
 
 " Enable mouse input for normal and visual modes
 set mouse=nv
@@ -234,7 +223,7 @@ set colorcolumn=+1
 
 "=================="
 "  Line Numbering  "
-"==================" 
+"=================="
 
 " Turn on line numbering relative to the current line (default)
 set relativenumber
@@ -337,4 +326,3 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
 
 " Use rg instead of ag with fzf.vim
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-

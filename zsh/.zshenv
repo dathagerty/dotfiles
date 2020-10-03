@@ -20,7 +20,6 @@ setopt pushd_minus # Make `cd -1` go to the previous directory, etc
 setopt pushd_to_home # pushd with no arguments goes home, like cd
 
 # Completion
-setopt auto_name_dirs # Parameters set to a path can be used as ~param
 setopt auto_remove_slash # Remove trailing slash if next char is a word delim
 setopt hash_list_all # Before completion, make sure entire path is hashed
 setopt glob_complete # Expand globs upon completion
@@ -29,7 +28,6 @@ setopt complete_in_word # Completions happen at the cursor's location
 # Expansion and Globbing
 setopt glob # Perform filename generation (i.e. the use of the * operator)
 setopt extended_glob # Use additional glob operators
-# setopt glob_dots # Glob dotfiles
 setopt mark_dirs # Directories resulting from globbing have trailing slashes
 setopt nomatch # If a glob fails, the command isn't executed
 
@@ -39,7 +37,6 @@ setopt hist_ignore_space # Ignore commands that begin with spaces
 setopt inc_append_history # Write commands to history file as soon as possible
 
 # Input/Output
-# setopt noclobber # Prevents `>` from clobbering files. Use `>|` to clobber.
 setopt correct # Try to correct the spelling of commands
 setopt interactive_comments # Allow comments in interactive shells
 
@@ -48,40 +45,11 @@ setopt auto_continue # When suspended jobs are disowned, resume them in the bg
 setopt auto_resume # single-word simple commands are candidates for resumption
 setopt bg_nice # Run background jobs at lower priority
 setopt check_jobs # Warn about background & suspended jobs on exit
-setopt monitor # Enable job control. This is default.
-
-# Prompting
-setopt prompt_cr # Print a \r before the prompt
-setopt prompt_sp # Preserve lines that would be covered by the \r
-setopt prompt_subst # Substitute in parameter/command/arithmetic expansions
-
-# ZLE
-# setopt no_beep # The shell shouldn't beep on ZLE errors (most beeps)
-setopt zle # Use ZLE. This is default, but I like to be explicit
-bindkey -v
-
-# Universal environment
-#--------------------
-
-ZDOTDIR=${HOME}/.zsh
-export ZDOTDIR
-export DOTFILES=${HOME}/.dotfiles
-
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-export GOPATH=$HOME/code/go
-
-export CPLUS_INCLUDE_PATH=/usr/local/include
-export LIBRARY_PATH=/usr/local/lib
-
-# Environment
-#--------------------
-export NODE_PATH=/usr/local/lib/node
 
 # Core tools
 LESS="-RSMsi"
-EDITOR="vim"
-VISUAL="vim"
+EDITOR="nvim"
+VISUAL="nvim"
 PAGER="less"
 export LESS EDITOR VISUAL PAGER
 
@@ -89,9 +57,29 @@ export LESS EDITOR VISUAL PAGER
 #--------------------
 
 HISTSIZE=2000
-HISTFILE=$HOME/.cache/zsh/.zhist
+HISTFILE=${HOME}/.zshhistory
 SAVEHIST=$HISTSIZE
 export HISTSIZE HISTFILE SAVEHIST
+
+# Universal environment
+#--------------------
+
+DOTFILES=${HOME}/.dotfiles
+export DOTFILES
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+export GOPATH=$HOME/code/go
+export GOROOT=$HOME/.asdf/installs/golang/1.14.4/go
+export NODE_PATH=/usr/local/lib/node
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+export CPLUS_INCLUDE_PATH=/usr/local/include
+export LIBRARY_PATH=/usr/local/lib
+
+# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Path
 #--------------------
@@ -105,7 +93,7 @@ export HISTSIZE HISTFILE SAVEHIST
 
 typeset -U path manpath fpath cdpath
 
-local prefix="${ZDOTDIR}/paths"
+local prefix="${DOTFILES}/zsh/paths"
 
 path=(
 	${(ef)"$(cat ${prefix}/paths.d/${HOST} 2> /dev/null)"}
@@ -134,5 +122,7 @@ cdpath=(
 	${(ef)"$(cat /etc/cdpaths                2> /dev/null)"}
 	${cdpath}
 )
+
+PATH=".git/safe/../../bin:$PATH"
 
 export path manpath fpath cdpath

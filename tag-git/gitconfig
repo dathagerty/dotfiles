@@ -1,5 +1,8 @@
+[user]
+    name = David Hagerty
+    # email = david.hagerty@cfacorp.com
 [color]
-  ui = 1
+    ui = auto
 
 [color "branch"]
   current = yellow
@@ -18,160 +21,163 @@
   untracked = magenta
 
 [diff]
-  renames = copies
-  mnemonicprefix = true
+    renames = copies
+    mnemonicprefix = true
 
 [core]
-  excludesfile = ~/.gitignore
-  editor = "vim"
-  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Nord'
+	excludesfile = /Users/david.hagerty/.gitignore
+    editor = "vim"
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme="Nord"
 
 [interactive]
-  diffFilter = delta --color-only --theme="Nord"
+    diffFilter = delta --color-only --theme="Nord"
 
 [commit]
-  template = ~/.gitmessage
+    template = ~/.gitmessage
 
 [alias]
-  # -------
-  # Staging
-  # -------
+    # -------
+    # Staging
+    # -------
 
-  # Interactively add files (or chunks) to staging
+    # Interactively add files (or chunks) to staging
     ai = add --interactive
 
-  # Add specific files to staging by file name
-  # Usage: g(it) a <filename(s)>
-  a = add
+    # Add specific files to staging by file name
+    # Usage: g(it) a <filename(s)>
+    a = add
 
-  # Add all files to the staging area
-  aa = add .
+    # Add all files to the staging area
+    aa = add .
 
-  # ----------
-  # Commitment
-  # ----------
+    # ----------
+    # Commitment
+    # ----------
 
-  # Basic commit, opens $EDITOR to write a commit message
-  c = commit -v
+    # Basic commit, opens $EDITOR to write a commit message
+    c = commit -v
 
-  # Basic commit with a message from the command-line
-  # Usage: g(it) cm "This is a bad commit message"
-  cm = commit -v -m
+    # Basic commit with a message from the command-line
+    # Usage: g(it) cm "This is a bad commit message"
+    cm = commit -v -m
 
-  # Auto-stage modified tracked files and commit with a message from the command line
-  # Usage: g(it) cma "This is a bad commit message"
-  cma = commit -v -a -m
+    # Auto-stage modified tracked files and commit with a message from the command line
+    # Usage: g(it) cma "This is a bad commit message"
+    cma = commit -vam
 
-  # Auto-stage modified tracked files and commit with $EDITOR
-  ca = commit -v -a
-  
-  # Auto-stage modified tracked files and commit with an initial commit message
-  ci = commit -v -a -m "Initial commit"
+    # Auto-stage modified tracked files and commit with $EDITOR
+    ca = commit -va
 
-  # --------------
-  # Signed Commits
-  # --------------
+    # Auto-stage modified tracked files and commit with an initial commit message
+    ci = commit -vam "Initial commit"
 
-  # These are variants of the above commands that sign commits with my GPG key.
-  # The commands include the `-S` flag on top of the normal shortcuts.
+    # --------------
+    # Signed Commits
+    # --------------
 
-  cs = commit -S -v
-  cms = commit -S -v -m
-  cmsa = commit -S -v -a -m
-  csa = commit -S -v -a
-  csi = commit -S -v -a -m "Initial commit"
+    # These are variants of the above commands that sign commits with my GPG key.
+    # The commands include the `-S` flag on top of the normal shortcuts.
 
-  # -----------
-  # Soft Resets
-  # -----------
+    cs = commit -S -v
+    cms = commit -S -vm
+    cmsa = commit -S -vam
+    csa = commit -S -va
+    csi = commit -S -vam "Initial commit"
 
-  # General shorthand for a reset. You must still specify a target revision.
-  # It will also still take command line flags like `--soft` or `--mixed`
-  # Usage: g(it) r [--soft] <target>
-  r = reset
+    # -----------
+    # Soft Resets
+    # -----------
 
-  # Reset to the first parent commit on HEAD
-  r1 = reset HEAD^
+    # General shorthand for a reset. You must still specify a target revision.
+    # It will also still take command line flags like `--soft` or `--mixed`
+    # Usage: g(it) r [--soft] <target>
+    r = reset
 
-  # Reset to the second parent (grandparent) commit on HEAD
-  r2 = reset HEAD^^
+    # Reset to the first parent commit on HEAD
+    r1 = reset HEAD^
 
-  # -----------
-  # Hard Resets
-  # -----------
+    # Reset to the second parent (grandparent) commit on HEAD
+    r2 = reset HEAD^^
 
-  # These resets are the same as above, but are hard (destructive) resets.
-  # This is where the nuclear weapons are stored.
+    # -----------
+    # Hard Resets
+    # -----------
 
-  rh = reset --hard
-  rh1 = reset --hard HEAD^
-  rh2 = reset --hard HEAD^^
+    # These resets are the same as above, but are hard (destructive) resets.
+    # This is where the nuclear weapons are stored.
 
-  # -----------------
-  # General Shortcuts
-  # -----------------
-  
-  # Show status of modified files, and show the remote branch the local branch is tracking.
-  st = status -sb
-  
-  d = diff
-  
-  # Save characters, save the world
-  # Usage: g(it) co <name>
-  co = checkout
-  
-  # Create a branch and checkout that branch
-  # Usage: g(it) cb <name>
-  cb = checkout -b
-  
-  # Create a branch in just one character
-  # Usage: g(it) b <name>
-  b = branch
-  
-  # Delete a branch in just two characters
-  # Usage: g(it) bd <name>
-  bd = branch -d
-  
-  f = fetch
-  
-  p = push
-  
-  po = push origin
-  
-  pm = push origin master
-  
-  # A prettier log output with short commit hashes
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  r = !GIT_NO_PAGER=1 git l -30
-  l = "!. ~/.vim/bundle/falcon/.githelpers && pretty_git_log"
+    rh = reset --hard
+    rh1 = reset --hard HEAD^
+    rh2 = reset --hard HEAD^^
 
-  # List all branches
-  bs = branch -a
-  
-  # List all remotes
-  rs = remote -v
-  
-  # List all git tags
-  tags = tag -l
-  
-  # Run the ctags git hook - this generates ctags inside the local .git directory
-  ctags = !.git/hooks/ctags
+    # -----------------
+    # General Shortcuts
+    # -----------------
 
-[github]
-  user = dhagerty9009
+    # Show status of modified files, and show the remote branch the local branch is tracking.
+    st = status -sb
+
+    d = diff
+
+    # Save characters, save the world
+    # Usage: g(it) co <name>
+    co = checkout
+
+    # Create a branch and checkout that branch
+    # Usage: g(it) cb <name>
+    cb = checkout -b
+
+    # Create a branch in just one character
+    # Usage: g(it) b <name>
+    b = branch
+
+    # Delete a branch in just two characters
+    # Usage: g(it) bd <name>
+    bd = branch -d
+
+    f = fetch
+
+    p = push
+    p1 = push -u
+
+    po = push origin
+
+    pm = push origin master
+
+    # A prettier log output with short commit hashes
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    r = !git lg -30
+
+    # List all branches
+    bs = branch -a
+
+    # List all remotes
+    rs = remote -v
+
+    # List all git tags
+    ts = tag -l
+
+    # Run the ctags git hook - this generates ctags inside the local .git directory
+    ctags = !./.git/hooks/ctags
+
+    # Mark a cloned repository as safe so that its bin/ directory will be on PATH
+    mark-safe = !mkdir -p ./.git/safe
+
+    # Fuzzy checkout
+    fco = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
 
 [credential]
-  helper = osxkeychain
+	helper = store
 
 [filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
 
 [filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
 
 [url "https://github.com/"]
   insteadOf = gh:
@@ -186,34 +192,37 @@
   insteadOf = srht:
 
 [branch]
-  autosetupmerge = true
-  autosetuprebase = always
+    autosetupmerge = true
+    autosetuprebase = always
 
 [rerere]
-  enabled = true
-  autoupdate = true
+    enabled = true
+    autoupdate = true
 
 [filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  required = true
-  clean = git-lfs clean -- %f
-
-[push]
-  default = matching
+    smudge = git-lfs smudge -- %f
+    required = true
+    clean = git-lfs clean -- %f
 
 [init]
-  templatedir = ~/.git_template
+    templatedir = ~/.git_template
 
 [merge]
-  tool = vimdiff
+    tool = vimdiff
+
+[push]
+    default = current
 
 [mergetool]
-  conflictstyle = diff3
-  prompt = false
-  keepBackup = true
+    conflictstyle = diff3
+    prompt = false
+    keepBackup = true
 
 [hub]
-  protocol = git
+    protocol = git
 
 [advice]
-  ignoredHook = false
+    ignoredHook = false
+
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg

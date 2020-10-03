@@ -1,3 +1,4 @@
+${PWD}
 ${HOME}
-${HOME}/Desktop
+${HOME}/code/riot
 ${HOME}/code

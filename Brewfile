@@ -1,26 +1,48 @@
+tap "adoptopenjdk/openjdk"
+tap "aws/tap"
+tap "cfacorp/tap"
+tap "d12frosted/emacs-plus"
 tap "ethereum/ethereum"
+tap "github/gh"
+tap "golangci/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "jesseduffield/lazydocker"
+tap "khanhas/tap"
 tap "thoughtbot/formulae"
-brew "autoconf"
+tap "universal-ctags/universal-ctags"
+tap "weaveworks/tap"
+cask "adoptopenjdk8"
+brew "archey"
 brew "automake"
-brew "bat"
+brew "coreutils"
+brew "libtool"
+brew "libyaml"
+brew "openssl@1.1"
+brew "readline"
+brew "unixodbc"
+brew "asdf"
 brew "ghc"
 brew "cabal-install"
 brew "cmake"
-brew "coreutils"
-brew "ctags"
-brew "dfu-programmer"
-brew "diff-so-fancy"
-brew "exercism"
-brew "fasd"
-brew "fd"
-brew "sdl2"
 brew "gcc"
+brew "curl"
+brew "dfu-programmer"
+brew "dialog"
+brew "diff-so-fancy"
+brew "docker-completion"
+brew "docker-compose-completion"
+brew "docker-machine-completion"
+brew "editorconfig"
+brew "pkg-config"
+brew "emacs"
+brew "fasd"
 brew "fpp"
 brew "fzf"
+brew "fzy"
+brew "gh"
 brew "gibo"
 brew "git"
 brew "git-extras"
@@ -28,67 +50,109 @@ brew "git-flow"
 brew "git-hooks"
 brew "git-lfs"
 brew "git-plus"
+brew "gnupg", link: false
 brew "gnu-sed"
-brew "go"
-brew "pinentry"
-brew "gpg-agent"
 brew "gradle"
+brew "graphviz"
 brew "htop"
 brew "hub"
+brew "hugo"
+brew "javarepl"
+brew "jq"
+brew "jsonnet"
+brew "kube-ps1"
+brew "kubectx"
+brew "kustomize"
 brew "less"
-brew "libtcod"
-brew "libtool"
+brew "libxslt"
+brew "m-cli"
 brew "macvim"
 brew "mas"
-brew "mercurial"
-brew "mingw-w64"
+brew "maven"
+brew "minikube", link: false
+brew "mpd"
+brew "mutt"
 brew "mysql", restart_service: true
+brew "ncmpcpp"
 brew "neovim"
 brew "nnn"
-brew "node"
 brew "noti"
+brew "notmuch"
 brew "opencv"
+brew "operator-sdk"
 brew "pandoc"
+brew "pipenv"
+brew "poppler"
+brew "postgresql", restart_service: true
 brew "prettyping"
+brew "prometheus"
+brew "r"
+brew "reattach-to-user-namespace"
 brew "redis"
 brew "ripgrep"
-brew "rust"
+brew "rust-analyzer"
 brew "screenfetch"
+brew "shellcheck"
 brew "sloccount"
-brew "ssh-copy-id"
-brew "swiftlint"
-brew "taylor"
+brew "ssh-copy-id", link: true
+brew "terraform"
 brew "the_silver_searcher"
+brew "tmux"
 brew "tomcat"
-brew "wine"
-brew "winetricks"
+brew "tree"
+brew "uncrustify"
+brew "unzip"
+brew "vault"
+brew "w3m"
 brew "xcproj"
 brew "xctool"
 brew "youtube-dl"
-brew "z"
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+brew "aws/tap/aws-sam-cli"
+brew "cfacorp/tap/alohomora"
+brew "cfacorp/tap/aws-login"
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-mailutils", "with-spacemacs-icon", "with-xwidgets"], link: false
+brew "golangci/tap/golangci-lint"
+brew "jesseduffield/lazydocker/lazydocker"
+brew "khanhas/tap/spicetify-cli"
 brew "thoughtbot/formulae/rcm"
-cask "chromedriver"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "weaveworks/tap/eksctl", link: false
+cask "alacritty"
+cask "amethyst"
+cask "docker"
+cask "minikube"
 cask "omnifocus"
-cask "xquartz"
-mas "Adblock Plus", id: 1432731683
+cask "qlcolorcode"
+cask "qlimagesize"
+cask "qlmarkdown"
+cask "qlstephen"
+cask "qlvideo"
+cask "quicklook-json"
+cask "quicklookase"
+cask "session-manager-plugin"
+cask "suspicious-package"
+cask "webpquicklook"
+mas "1Blocker", id: 1107421413
 mas "Affinity Designer", id: 824171161
-mas "BBEdit", id: 404009241
-mas "Bear", id: 1091189122
+mas "Affinity Photo", id: 824183456
+mas "Agenda", id: 1287445660
+mas "Amphetamine", id: 937984704
 mas "CARROT Weather", id: 993487541
+mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
 mas "Drafts", id: 1435957248
 mas "Fantastical", id: 975937182
-mas "GarageBand", id: 682658836
+mas "Front and Center", id: 1493996622
+mas "Instapaper", id: 1481302432
 mas "Just Press Record", id: 979561272
 mas "Magnet", id: 441258766
-mas "Pages", id: 409201541
-mas "Pastebot", id: 1179623856
+mas "PiPifier", id: 1160374471
+mas "Redis Desktop Manager", id: 1475905948
+mas "Slack", id: 803453959
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
-mas "Transmit", id: 1436522307
 mas "Twitterrific", id: 1289378661
-mas "Vimeo", id: 1356686763
 mas "Xcode", id: 497799835
